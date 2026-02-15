@@ -1,54 +1,488 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RideReach — Updating</title>
-  <meta name="robots" content="noindex,nofollow" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RideReach — Your Brand. Their Ride. Unlimited Reach.</title>
+  <meta name="description" content="RideReach is a hyper-local in-car advertising network. Connect brands with real passengers on sleek in-vehicle screens across your city.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <meta property="og:title" content="RideReach — Hyper-local In-Car Advertising">
+  <meta property="og:description" content="Target local riders on premium in-car tablets. Flexible packages for advertisers and a new earning stream for drivers.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og.jpg">
+  <meta property="og:url" content="https://ridereach.ca/">
+
   <style>
-    :root{--bg:#0b0b0c;--panel:#121214;--line:rgba(255,255,255,.08);--text:#f2f2f2;--muted:#bdbdbd;--red:#E31837;}
+    :root{
+      --red:#E31837;
+      --soft-red:#FF5A73;
+      --bg:#0f0f10;
+      --panel:#121214;
+      --line:rgba(255,255,255,.08);
+      --text:#f2f2f2;
+      --muted:#bdbdbd;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --max:1200px;
+    }
     *{box-sizing:border-box}
-    body{
-      margin:0; min-height:100vh;
-      display:grid; place-items:center;
+    html,body{
+      margin:0;padding:0;
       background:linear-gradient(180deg,#0b0b0c,#121214);
       color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      padding:24px;
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      scroll-behavior:smooth;
     }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),92vw); margin-inline:auto;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.9rem 1.2rem;border-radius:999px;
+      font-weight:700; letter-spacing:.2px;
+      border:1px solid transparent;
+      transition:.2s;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn-primary{background:var(--red); border-color:rgba(227,24,55,.55); box-shadow:var(--shadow);}
+    .btn-primary:hover{transform:translateY(-2px); filter:brightness(1.05);}
+    .btn-ghost{background:transparent; border-color:#363636; color:var(--text);}
+    .btn-ghost:hover{border-color:#555; transform:translateY(-2px);}
+
+    /* Sticky header (ShinePros feel) */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(1.2) blur(10px);
+      background:rgba(12,12,12,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.9rem 0;
+      position:relative;
+      gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:.75rem;}
+    .brand img{height:36px; width:auto; display:block;}
+    .brand b{font-weight:800; letter-spacing:.2px;}
+    .menu{display:flex; gap:.7rem; align-items:center;}
+    .menu a{
+      color:rgba(242,242,242,.92);
+      padding:.55rem .75rem;
+      border-radius:999px;
+      font-weight:600;
+    }
+    .menu a:hover{background:rgba(255,255,255,.08);}
+    .mobile-toggle{display:none;background:none;border:none;color:#fff;font-size:1.4rem}
+    @media (max-width:900px){
+      .menu{
+        display:none;
+        position:absolute; right:0; top:64px;
+        background:#121214;
+        border:1px solid rgba(255,255,255,.08);
+        padding:1rem;
+        border-radius:14px;
+        flex-direction:column;
+        min-width:220px;
+        align-items:stretch;
+      }
+      .menu.open{display:flex;}
+      .mobile-toggle{display:inline-flex;}
+      .menu a{display:block;}
+    }
+
+    /* Sections */
+    section{padding:78px 0; border-top:1px solid rgba(255,255,255,.06);}
+    h1,h2{font-family:"Playfair Display",serif; margin:0;}
+    .title{font-weight:800; line-height:1.05; font-size:clamp(2.2rem,5vw,3.6rem);}
+    .lead{color:rgba(242,242,242,.78); line-height:1.65; max-width:70ch; margin:10px 0 0;}
     .card{
-      width:min(760px,92vw);
-      border:1px solid var(--line);
       background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-      border-radius:18px;
-      padding:26px;
-      text-align:center;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
     }
-    .logo{display:flex;justify-content:center;margin-bottom:14px}
-    .logo img{height:44px;width:auto;display:block}
-    h1{margin:8px 0 8px; font-size:34px; letter-spacing:-.02em}
-    p{margin:0; color:var(--muted); line-height:1.6}
+
+    /* Hero */
+    .hero{position:relative; isolation:isolate; padding:88px 0 70px; border-top:none;}
+    .hero::before{
+      content:""; position:absolute; inset:0; z-index:-2;
+      background:url("assets/hero.jpg") center/cover no-repeat fixed;
+      opacity:.18;
+    }
+    .hero::after{
+      content:""; position:absolute; inset:0; z-index:-1;
+      background:
+        radial-gradient(1200px 500px at 70% -10%, rgba(227,24,55,.35), transparent 60%),
+        radial-gradient(800px 300px at 10% 110%, rgba(255,90,115,.25), transparent 70%);
+      pointer-events:none;
+    }
+    .heroGrid{display:grid; grid-template-columns:1.15fr .85fr; gap:34px; align-items:center;}
+    @media (max-width:900px){ .heroGrid{grid-template-columns:1fr;} }
+
+    .badges{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:14px;}
     .pill{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:8px 12px;border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.22);
-      color:var(--muted);
-      margin-top:14px;
-      font-size:13px;
+      display:inline-flex; align-items:center;
+      padding:.25rem .7rem;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      font-size:.82rem;
+      color:rgba(242,242,242,.78);
+      background:rgba(0,0,0,.18);
     }
-    .dot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 18px rgba(227,24,55,.35)}
+    .ctaRow{display:flex; gap:.75rem; flex-wrap:wrap; margin-top:14px;}
+
+    /* Media blocks (image placeholders) */
+    .media{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:#0c0c0d;
+    }
+    .media img{display:block; width:100%; height:auto;}
+
+    /* Steps */
+    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px;}
+    .step{background:#121214; border:1px dashed rgba(255,255,255,.12); border-radius:16px; padding:18px;}
+    .step b{display:block; margin-top:6px;}
+    .step small{color:rgba(242,242,242,.65); font-weight:700;}
+    @media (max-width:900px){ .steps{grid-template-columns:1fr;} }
+
+    /* Pricing */
+    .pricing{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:18px;}
+    .plan{position:relative;}
+    .plan .tier{font-weight:800; letter-spacing:.3px;}
+    .plan ul{padding-left:1rem; color:rgba(242,242,242,.78); line-height:1.6; margin:12px 0 0;}
+    .badgeTop{
+      position:absolute; top:14px; right:14px;
+      font-size:.82rem;
+      padding:.25rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      color:rgba(242,242,242,.78);
+    }
+    .featured{border-color:rgba(227,24,55,.55); box-shadow:0 0 0 1px rgba(227,24,55,.28), var(--shadow);}
+    @media (max-width:1100px){ .pricing{grid-template-columns:1fr 1fr;} }
+    @media (max-width:700px){ .pricing{grid-template-columns:1fr;} }
+
+    /* Contact */
+    form{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px;}
+    .full{grid-column:span 2;}
+    @media (max-width:700px){ form{grid-template-columns:1fr;} .full{grid-column:span 1;} }
+    label{font-weight:600; color:rgba(242,242,242,.86);}
+    input,textarea{
+      background:#0f0f10;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      color:#fff;
+      padding:.85rem 1rem;
+      outline:none;
+      width:100%;
+    }
+    textarea{min-height:140px; resize:vertical;}
+    input:focus,textarea:focus{
+      border-color:rgba(227,24,55,.55);
+      box-shadow:0 0 0 4px rgba(227,24,55,.12);
+    }
+
+    footer{padding:34px 0; color:rgba(242,242,242,.62); border-top:1px solid rgba(255,255,255,.06);}
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <div class="logo">
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top">
+      <!-- Logo fixed: root absolute path -->
       <img src="/logo.png" alt="RideReach Logo"
-           onerror="this.style.display='none'">
-    </div>
-    <h1>We’re updating RideReach.</h1>
-    <p>We’re making improvements to the site right now.<br/>Check back soon.</p>
-    <div class="pill"><span class="dot"></span> Temporary maintenance / redesign</div>
+           onerror="this.onerror=null; this.src='logo.png';">
+      <b>RideReach</b>
+    </a>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+    <nav class="menu" id="menu">
+      <a href="#about">About</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#drivers">Drivers</a>
+      <a class="btn btn-primary" href="#contact">Request Pricing</a>
+    </nav>
   </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container heroGrid">
+      <div>
+        <div class="badges">
+          <span class="pill">Peterborough + Surrounding Areas</span>
+          <span class="pill">In-Vehicle Digital Screens</span>
+          <span class="pill">Hyper-Local Reach</span>
+        </div>
+
+        <h1 class="title">Your Brand. Their Ride.<br>Unlimited Reach.</h1>
+        <p class="lead">
+          RideReach places your business on sleek in-vehicle screens — giving you consistent daily exposure to real local customers.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn btn-primary" href="#contact">Request Pricing</a>
+          <a class="btn btn-ghost" href="#pricing">View Packages</a>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <small>Step 1</small>
+            <b>Pick a Package</b>
+            <p class="lead" style="margin-top:8px">Choose Bronze, Silver, Gold, or Platinum based on your goals.</p>
+          </div>
+          <div class="step">
+            <small>Step 2</small>
+            <b>Send Your Ad</b>
+            <p class="lead" style="margin-top:8px">We format it for the screens and schedule your campaign.</p>
+          </div>
+          <div class="step">
+            <small>Step 3</small>
+            <b>Get Seen Daily</b>
+            <p class="lead" style="margin-top:8px">Your ad runs repeatedly throughout the day inside vehicles.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin:0 0 10px">Modern local advertising people actually see</h2>
+        <p class="lead" style="margin:0 0 14px">Perfect for restaurants, gyms, salons, trades, real estate, retail, events, and more.</p>
+        <div class="media">
+          <!-- Placeholder image (upload assets/screen.jpg) -->
+          <img src="assets/screen.jpg" alt="RideReach in-vehicle screen">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2>About RideReach</h2>
+      <p class="lead">
+        A hyper-local in-car advertising network designed for repeated exposure in front of real customers — in the places they already spend time.
+      </p>
+
+      <div class="media" style="margin-top:18px">
+        <!-- Placeholder image (upload assets/about.jpg) -->
+        <img src="assets/about.jpg" alt="RideReach local exposure">
+      </div>
+
+      <div class="grid" style="margin-top:18px">
+        <div class="card">
+          <h3 style="margin:0 0 6px">📍 Hyper-Local Targeting</h3>
+          <p class="lead" style="margin-top:0">Reach people where they live, shop, and move every day.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">🔁 High Frequency</h3>
+          <p class="lead" style="margin-top:0">Your ad plays repeatedly, building recognition and trust.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">📺 Premium Screens</h3>
+          <p class="lead" style="margin-top:0">Sleek in-vehicle tablets deliver your message in a modern format.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how">
+    <div class="container">
+      <h2>How It Works</h2>
+      <p class="lead">Choose a package, send your creative, and we handle scheduling and placement.</p>
+
+      <div class="media" style="margin-top:18px">
+        <!-- Placeholder image (upload assets/how.jpg) -->
+        <img src="assets/how.jpg" alt="How RideReach works">
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <h2>Packages</h2>
+      <p class="lead">Choose your visibility level. Request pricing for current availability and rates.</p>
+
+      <div class="pricing">
+        <div class="card plan">
+          <span class="badgeTop">Starter</span>
+          <div class="tier">Bronze</div>
+          <ul>
+            <li>Entry-level daily exposure</li>
+            <li>Perfect for testing & awareness</li>
+            <li>Affordable monthly option</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btn-primary" href="#contact">Request Bronze Pricing</a>
+          </div>
+        </div>
+
+        <div class="card plan featured">
+          <span class="badgeTop">Popular</span>
+          <div class="tier">Silver</div>
+          <ul>
+            <li>More daily impressions</li>
+            <li>Better repetition & recall</li>
+            <li>Strong value for local businesses</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btn-primary" href="#contact">Request Silver Pricing</a>
+          </div>
+        </div>
+
+        <div class="card plan">
+          <span class="badgeTop">High Frequency</span>
+          <div class="tier">Gold</div>
+          <ul>
+            <li>High daily play rate</li>
+            <li>Built for competitive categories</li>
+            <li>Great for promos & launches</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btn-primary" href="#contact">Request Gold Pricing</a>
+          </div>
+        </div>
+
+        <div class="card plan">
+          <span class="badgeTop">Max Reach</span>
+          <div class="tier">Platinum</div>
+          <ul>
+            <li>Maximum frequency & placement</li>
+            <li>Best for aggressive growth</li>
+            <li>Top visibility over time</li>
+          </ul>
+          <div class="ctaRow" style="margin-top:14px">
+            <a class="btn btn-primary" href="#contact">Request Platinum Pricing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRIVERS -->
+  <section id="drivers">
+    <div class="container">
+      <h2>For Drivers</h2>
+      <p class="lead">RideReach also creates an earning stream for drivers by running ads on in-vehicle screens.</p>
+
+      <div class="media" style="margin-top:18px">
+        <!-- Placeholder image (upload assets/drivers.jpg) -->
+        <img src="assets/drivers.jpg" alt="Drivers with RideReach screens">
+      </div>
+
+      <div class="grid" style="margin-top:18px">
+        <div class="card">
+          <h3 style="margin:0 0 6px">Simple Setup</h3>
+          <p class="lead" style="margin-top:0">We provide the details for mounting and running the screen.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">Consistent Earnings</h3>
+          <p class="lead" style="margin-top:0">Earn through ad placements and campaign activity.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">Local Network</h3>
+          <p class="lead" style="margin-top:0">Be part of a premium advertising network built in your community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Request Pricing</h2>
+      <p class="lead">Tell us what you’re promoting and we’ll reply with packages, pricing, and next steps.</p>
+
+      <div class="media" style="margin-top:18px">
+        <!-- Placeholder image (upload assets/contact.jpg) -->
+        <img src="assets/contact.jpg" alt="Contact RideReach">
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <form onsubmit="return rrSubmit(event)">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" required placeholder="Your name">
+          </div>
+
+          <div class="field">
+            <label for="business">Business Name</label>
+            <input id="business" name="business" placeholder="Business name">
+          </div>
+
+          <div class="field full">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@email.com">
+          </div>
+
+          <div class="field full">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required placeholder="What do you want to advertise? Which package are you leaning toward?"></textarea>
+          </div>
+
+          <div class="full" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+            <button class="btn btn-primary" type="submit">Send Request</button>
+            <span id="rrNote" style="color:rgba(242,242,242,.72)"></span>
+          </div>
+        </form>
+      </div>
+
+      <p style="margin-top:14px; color:rgba(242,242,242,.62); font-size:.92rem">
+        Tip: This form is currently “on-page only” (no email sending yet). When you’re ready, we’ll connect Formspree.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div>© <span id="year"></span> RideReach</div>
+      <div>In-Vehicle Digital Advertising • Peterborough + Surrounding Areas</div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('mobileToggle');
+  const menu = document.getElementById('menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu?.querySelectorAll('a')?.forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }));
+
+  // Dummy submit
+  function rrSubmit(e){
+    e.preventDefault();
+    document.getElementById('rrNote').textContent = "Thanks — request received.";
+    e.target.reset();
+    return false;
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
