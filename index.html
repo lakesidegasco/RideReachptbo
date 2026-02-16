@@ -169,6 +169,21 @@
     .driverBanner{max-width:640px;margin-inline:auto;}
     @media (min-width:901px){ .driverBanner{max-width:760px} }
 
+    /* ✅ FIX: force driver media to always have visible height + stable painting */
+    #drivers .driverBanner{
+      min-height:220px;
+      display:block;
+      transform:translateZ(0);
+    }
+    #drivers .driverBanner img{
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:560px;
+      object-fit:contain;
+      background:#0c0c0d;
+    }
+
     /* Contact */
     form{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px;}
     .full{grid-column:span 2;}
@@ -195,7 +210,7 @@
       border-top:1px solid rgba(255,255,255,.06);
     }
 
-    /* ===== PACKAGES AS IMAGE CARDS (your request) ===== */
+    /* ===== PACKAGES AS IMAGE CARDS ===== */
     .pkgGrid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
@@ -362,7 +377,7 @@
     </div>
   </section>
 
-  <!-- PRICING (PACKAGES AS IMAGES + SELECT BUTTONS) -->
+  <!-- PRICING -->
   <section id="pricing">
     <div class="container">
       <h2>Packages</h2>
@@ -431,11 +446,6 @@
         </div>
 
       </div>
-
-      <p class="lead" style="margin-top:14px">
-        Image filenames required in <b>/assets</b>:
-        <b>pkg-bronze.jpg</b>, <b>pkg-silver.jpg</b>, <b>pkg-gold.jpg</b>, <b>pkg-platinum.jpg</b>
-      </p>
     </div>
   </section>
 
@@ -445,8 +455,15 @@
       <h2>For Drivers</h2>
       <p class="lead">RideReach also creates an earning stream for drivers by running ads on in-vehicle screens.</p>
 
+      <!-- ✅ FIXED: forced visible + fallback if anything goes wrong -->
       <div class="media driverBanner" style="margin-top:18px">
-        <img src="assets/driver.jpg" alt="Join the RideReach Driver Network">
+        <img
+          src="assets/driver.jpg"
+          alt="Join the RideReach Driver Network"
+          loading="lazy"
+          decoding="async"
+          onerror="this.onerror=null; this.src='assets/hero.jpg';"
+        >
       </div>
 
       <div class="featureGrid">
