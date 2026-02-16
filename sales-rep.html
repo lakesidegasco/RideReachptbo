@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RideReach — Sales Rep Application</title>
+  <meta name="description" content="Apply to become a RideReach sales rep.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --red:#E31837;
+      --soft-red:#FF5A73;
+      --panel:#121214;
+      --line:rgba(255,255,255,.08);
+      --text:#f2f2f2;
+      --muted:#bdbdbd;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+      --max:980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      background:linear-gradient(180deg,#0b0b0c,#121214);
+      color:var(--text);
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),92vw); margin:0 auto;}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(1.2) blur(10px);
+      background:rgba(12,12,12,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.9rem 0;
+      gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:.75rem;}
+    .brand img{height:36px;width:auto;display:block}
+    .brand b{font-weight:800; letter-spacing:.2px;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.9rem 1.2rem;border-radius:999px;
+      font-weight:700; letter-spacing:.2px;
+      border:1px solid transparent;
+      transition:.2s;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn-primary{background:var(--red); border-color:rgba(227,24,55,.55); box-shadow:var(--shadow); color:#fff;}
+    .btn-primary:hover{transform:translateY(-2px); filter:brightness(1.05);}
+    main{padding:54px 0 70px;}
+    h1{font-family:"Playfair Display",serif;margin:0;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.05}
+    .lead{color:rgba(242,242,242,.78); line-height:1.65; margin:12px 0 0; max-width:70ch;}
+    .card{
+      margin-top:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+    .full{grid-column:span 2;}
+    @media (max-width:820px){ .grid{grid-template-columns:1fr;} .full{grid-column:span 1;} }
+
+    label{font-weight:600; color:rgba(242,242,242,.86);}
+    input, select, textarea{
+      width:100%;
+      background:#0f0f10;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      color:#fff;
+      padding:.85rem 1rem;
+      outline:none;
+    }
+    textarea{min-height:140px; resize:vertical;}
+    input:focus, select:focus, textarea:focus{
+      border-color:rgba(227,24,55,.55);
+      box-shadow:0 0 0 4px rgba(227,24,55,.12);
+    }
+    .note{color:rgba(242,242,242,.62); font-size:.92rem; margin-top:14px; line-height:1.5;}
+    footer{padding:28px 0; border-top:1px solid rgba(255,255,255,.06); color:rgba(242,242,242,.62);}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="RideReach Logo">
+      <b>RideReach</b>
+    </a>
+    <a class="btn btn-primary" href="index.html#contact">Advertiser Pricing</a>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Sales Rep Application</h1>
+  <p class="lead">
+    Apply to join RideReach as a local sales representative. If it’s a fit, we’ll reach out with next steps.
+  </p>
+
+  <div class="card">
+    <form action="https://formspree.io/f/xojndoye" method="POST">
+      <input type="hidden" name="_subject" value="RideReach — Sales Rep Application">
+      <input type="hidden" name="_captcha" value="false">
+
+      <div class="grid">
+        <div>
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="Full Name" required placeholder="Your full name">
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="Phone" required placeholder="(xxx) xxx-xxxx">
+        </div>
+
+        <div class="full">
+          <label for="email">Email</label>
+          <input id="email" name="Email" type="email" required placeholder="you@email.com">
+        </div>
+
+        <div>
+          <label for="city">City / Area</label>
+          <input id="city" name="City/Area" placeholder="Peterborough, Kawarthas, etc.">
+        </div>
+
+        <div>
+          <label for="availability">Availability</label>
+          <select id="availability" name="Availability" required>
+            <option value="" selected disabled>Select one</option>
+            <option>Evenings</option>
+            <option>Weekdays</option>
+            <option>Weekends</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="experience">Sales Experience</label>
+          <select id="experience" name="Sales Experience" required>
+            <option value="" selected disabled>Select one</option>
+            <option>0–1 years</option>
+            <option>1–3 years</option>
+            <option>3–5 years</option>
+            <option>5+ years</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="comfort">Comfort Level</label>
+          <select id="comfort" name="Comfort Level" required>
+            <option value="" selected disabled>Select one</option>
+            <option>Cold outreach (calls/DMs)</option>
+            <option>Warm outreach (network/referrals)</option>
+            <option>Both</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label for="why">Why do you want this role?</label>
+          <textarea id="why" name="Why" required placeholder="Tell us why you’re a fit for RideReach."></textarea>
+        </div>
+
+        <div class="full">
+          <label for="bizTypes">What businesses would you target first?</label>
+          <textarea id="bizTypes" name="Target Businesses" placeholder="Example: gyms, salons, restaurants, realtors, trades, etc."></textarea>
+        </div>
+
+        <div class="full">
+          <label for="links">LinkedIn / Resume Link (optional)</label>
+          <input id="links" name="Links" placeholder="Paste a link (Google Drive / LinkedIn / etc.)">
+        </div>
+
+        <div class="full" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:6px;">
+          <button class="btn btn-primary" type="submit">Submit Application</button>
+        </div>
+      </div>
+
+      <p class="note">
+        Note: This form sends directly to our inbox. If you don’t hear back within a few days, feel free to follow up.
+      </p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+    <div>© 2025 RideReach</div>
+    <div>Sales Rep Applications</div>
+  </div>
+</footer>
+</body>
+</html>
