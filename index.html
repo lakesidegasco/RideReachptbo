@@ -251,7 +251,6 @@
 <header>
   <div class="container nav">
     <a class="brand" href="#top">
-      <!-- ridereach.ca: use relative path -->
       <img src="logo.png" alt="RideReach Logo">
       <b>RideReach</b>
     </a>
@@ -313,7 +312,6 @@
         <h2 style="margin:0 0 10px">Modern local advertising people actually see</h2>
         <p class="lead" style="margin:0 0 14px">Perfect for restaurants, gyms, salons, trades, real estate, retail, events, and more.</p>
         <div class="media">
-          <!-- This is ONLY screen.jpg (no fallback to hero) -->
           <img src="assets/screen.jpg" alt="RideReach in-vehicle screen">
         </div>
       </div>
@@ -328,7 +326,6 @@
         RideReach is a hyper-local in-car advertising network built for repeated exposure — in front of real passengers, in real neighborhoods.
       </p>
 
-      <!-- Optional image: only shows if assets/about.jpg exists -->
       <div class="media" style="margin-top:18px">
         <img src="assets/about.jpg" alt="RideReach local exposure"
              onerror="this.closest('.media')?.remove();">
@@ -357,7 +354,6 @@
       <h2>How It Works</h2>
       <p class="lead">Choose a package, send your creative, and we handle scheduling and placement.</p>
 
-      <!-- Optional image: only shows if assets/how.jpg exists -->
       <div class="media" style="margin-top:18px">
         <img src="assets/how.jpg" alt="How RideReach works"
              onerror="this.closest('.media')?.remove();">
@@ -464,50 +460,47 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT (FORMSPREE WIRED TO YOUR ENDPOINT) -->
   <section id="contact">
     <div class="container">
       <h2>Request Pricing</h2>
       <p class="lead">Tell us what you’re promoting and we’ll reply with packages, pricing, and next steps.</p>
 
-      <!-- Optional image: only shows if assets/contact.jpg exists -->
       <div class="media" style="margin-top:18px">
         <img src="assets/contact.jpg" alt="Contact RideReach"
-             onerror="this.closest('.media')?.remove();">
+             onerror="this.style.display='none'">
       </div>
 
       <div class="card" style="margin-top:18px">
-        <form onsubmit="return rrSubmit(event)">
-          <div class="field">
+        <form action="https://formspree.io/f/xojndoye" method="POST">
+          <div>
             <label for="name">Name</label>
-            <input id="name" name="name" required placeholder="Your name">
+            <input id="name" name="Name" required placeholder="Your name">
           </div>
 
-          <div class="field">
+          <div>
             <label for="business">Business Name</label>
-            <input id="business" name="business" placeholder="Business name">
+            <input id="business" name="Business Name" placeholder="Business name">
           </div>
 
-          <div class="field full">
+          <div class="full">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="you@email.com">
+            <input id="email" name="Email" type="email" required placeholder="you@email.com">
           </div>
 
-          <div class="field full">
+          <div class="full">
             <label for="message">Message</label>
-            <textarea id="message" name="message" required placeholder="What do you want to advertise? Which package are you leaning toward?"></textarea>
+            <textarea id="message" name="Message" required placeholder="What do you want to advertise? Which package are you leaning toward?"></textarea>
           </div>
+
+          <input type="hidden" name="_subject" value="New RideReach Pricing Request">
+          <input type="hidden" name="_captcha" value="false">
 
           <div class="full" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap">
             <button class="btn btn-primary" type="submit">Send Request</button>
-            <span id="rrNote" style="color:rgba(242,242,242,.72)"></span>
           </div>
         </form>
       </div>
-
-      <p style="margin-top:14px; color:rgba(242,242,242,.62); font-size:.92rem">
-        Tip: This form is currently “on-page only” (no email sending yet). When you’re ready, we’ll connect Formspree.
-      </p>
     </div>
   </section>
 
@@ -547,15 +540,8 @@ Start date:
 `;
   }
 
-  // Dummy submit
-  function rrSubmit(e){
-    e.preventDefault();
-    document.getElementById('rrNote').textContent = "Thanks — request received.";
-    e.target.reset();
-    return false;
-  }
-
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // Set year to 2025 (your request)
+  document.getElementById('year').textContent = "2025";
 </script>
 
 </body>
