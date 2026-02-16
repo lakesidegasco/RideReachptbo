@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RideReach — Driver Partner Application</title>
+  <meta name="description" content="Apply to join the RideReach Driver Network.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --red:#E31837; --soft-red:#FF5A73; --panel:#121214;
+      --line:rgba(255,255,255,.08); --text:#f2f2f2; --muted:#bdbdbd;
+      --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.25); --max:980px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh;
+      background:linear-gradient(180deg,#0b0b0c,#121214);
+      color:var(--text);
+      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max),92vw); margin-inline:auto;}
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(1.2) blur(10px);
+      background:rgba(12,12,12,.72);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.9rem 0; gap:14px; flex-wrap:wrap;
+    }
+    .brand{display:flex; align-items:center; gap:.75rem;}
+    .brand img{height:36px;width:auto;display:block}
+    .brand b{font-weight:800; letter-spacing:.2px;}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:.85rem 1.1rem;border-radius:999px;
+      font-weight:700; letter-spacing:.2px;
+      border:1px solid transparent;
+      transition:.2s; cursor:pointer;
+      user-select:none; white-space:nowrap;
+    }
+    .btn-primary{background:var(--red); border-color:rgba(227,24,55,.55); box-shadow:var(--shadow); color:#fff;}
+    .btn-primary:hover{transform:translateY(-2px); filter:brightness(1.05);}
+    .btn-ghost{background:transparent;border-color:#363636;color:var(--text);}
+    .btn-ghost:hover{border-color:#555;transform:translateY(-2px);}
+
+    main{padding:54px 0 70px;}
+    h1{font-family:"Playfair Display",serif;margin:0;font-size:clamp(2rem,4.6vw,3.1rem);line-height:1.05}
+    .lead{color:rgba(242,242,242,.78); line-height:1.65; margin:12px 0 0; max-width:75ch;}
+
+    .card{
+      margin-top:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    form{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:0;}
+    .full{grid-column:span 2;}
+    @media (max-width:820px){ form{grid-template-columns:1fr;} .full{grid-column:span 1;} }
+
+    label{font-weight:600; color:rgba(242,242,242,.86);}
+    input, select, textarea{
+      width:100%;
+      background:#0f0f10;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      color:#fff;
+      padding:.85rem 1rem;
+      outline:none;
+    }
+    textarea{min-height:130px; resize:vertical;}
+    input:focus, select:focus, textarea:focus{
+      border-color:rgba(227,24,55,.55);
+      box-shadow:0 0 0 4px rgba(227,24,55,.12);
+    }
+
+    .pillRow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+    .pill{
+      display:inline-flex; align-items:center;
+      padding:.25rem .7rem;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:999px;
+      font-size:.82rem;
+      color:rgba(242,242,242,.78);
+      background:rgba(0,0,0,.18);
+    }
+
+    .note{color:rgba(242,242,242,.62); font-size:.92rem; margin-top:14px; line-height:1.55;}
+    footer{padding:28px 0; border-top:1px solid rgba(255,255,255,.06); color:rgba(242,242,242,.62);}
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="RideReach Logo">
+      <b>RideReach</b>
+    </a>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn btn-ghost" href="careers.html">Careers</a>
+      <a class="btn btn-primary" href="index.html#contact">Advertiser Pricing</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Driver Partner Application</h1>
+  <p class="lead">
+    Join the RideReach Driver Network and earn extra income by running approved ads on a mounted in-vehicle tablet.
+  </p>
+
+  <div class="pillRow">
+    <span class="pill">Flexible schedule</span>
+    <span class="pill">Local network</span>
+    <span class="pill">Earn while you drive</span>
+  </div>
+
+  <div class="card">
+    <form action="https://formspree.io/f/xojndoye" method="POST">
+      <input type="hidden" name="_subject" value="RideReach — Driver Partner Application">
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Contact -->
+      <div class="full">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" name="Full Name" required placeholder="Your full name">
+      </div>
+
+      <div>
+        <label for="phone">Phone</label>
+        <input id="phone" name="Phone" required placeholder="(xxx) xxx-xxxx">
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input id="email" name="Email" type="email" required placeholder="you@email.com">
+      </div>
+
+      <div class="full">
+        <label for="city">City / Area</label>
+        <input id="city" name="City/Area" placeholder="Peterborough, Kawarthas, etc.">
+      </div>
+
+      <!-- Rideshare status -->
+      <div class="full">
+        <label for="platforms">Who do you currently drive for?</label>
+        <select id="platforms" name="Platforms" required>
+          <option value="" selected disabled>Select one</option>
+          <option>YDrive</option>
+          <option>Uride</option>
+          <option>Uber</option>
+          <option>Lyft</option>
+          <option>Multiple (I'll specify below)</option>
+          <option>Not currently driving rideshare (delivery/other)</option>
+        </select>
+      </div>
+
+      <div class="full">
+        <label for="platformDetails">If multiple / other, list platforms</label>
+        <input id="platformDetails" name="Platform Details" placeholder="Example: Uber + Uride, SkipTheDishes, DoorDash, etc.">
+      </div>
+
+      <!-- Experience -->
+      <div>
+        <label for="years">Rideshare experience (years)</label>
+        <select id="years" name="Rideshare Experience (Years)" required>
+          <option value="" selected disabled>Select</option>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6+</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="months">Additional months</label>
+        <select id="months" name="Rideshare Experience (Months)" required>
+          <option value="" selected disabled>Select</option>
+          <option>0</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+          <option>11</option>
+        </select>
+      </div>
+
+      <!-- Hours -->
+      <div>
+        <label for="hours">How many hours per week do you drive?</label>
+        <select id="hours" name="Hours per Week" required>
+          <option value="" selected disabled>Select</option>
+          <option>Under 10</option>
+          <option>10–19</option>
+          <option>20–29</option>
+          <option>30–39</option>
+          <option>40+</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="days">Typical driving days</label>
+        <select id="days" name="Typical Days" required>
+          <option value="" selected disabled>Select</option>
+          <option>Mostly weekdays</option>
+          <option>Mostly weekends</option>
+          <option>Even mix</option>
+          <option>Nights only</option>
+          <option>Varies</option>
+        </select>
+      </div>
+
+      <!-- Vehicle -->
+      <div class="full">
+        <label for="vehicle">Vehicle (Year / Make / Model)</label>
+        <input id="vehicle" name="Vehicle" required placeholder="Example: 2018 Toyota Camry">
+      </div>
+
+      <div>
+        <label for="vehicleCondition">Vehicle condition</label>
+        <select id="vehicleCondition" name="Vehicle Condition" required>
+          <option value="" selected disabled>Select</option>
+          <option>Excellent</option>
+          <option>Good</option>
+          <option>Fair</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="interior">Interior condition</label>
+        <select id="interior" name="Interior Condition" required>
+          <option value="" selected disabled>Select</option>
+          <option>Excellent</option>
+          <option>Good</option>
+          <option>Fair</option>
+        </select>
+      </div>
+
+      <!-- Notes -->
+      <div class="full">
+        <label for="notes">Anything else we should know?</label>
+        <textarea id="notes" name="Notes" placeholder="Example: your primary routes, busiest times, whether you do airport runs, etc."></textarea>
+      </div>
+
+      <!-- Consent -->
+      <div class="full">
+        <label for="consent">Confirmation</label>
+        <select id="consent" name="Consent" required>
+          <option value="" selected disabled>Select</option>
+          <option>I confirm I have a valid driver’s license and active insurance</option>
+          <option>I will provide proof if selected</option>
+        </select>
+      </div>
+
+      <div class="full" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:6px;">
+        <button class="btn btn-primary" type="submit">Submit Application</button>
+        <a class="btn btn-ghost" href="careers.html">Back to Careers</a>
+      </div>
+
+      <p class="note full">
+        After you submit, we’ll review and reach out if you’re a fit for the network.
+      </p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+    <div>© 2025 RideReach</div>
+    <div>Driver Partner Application</div>
+  </div>
+</footer>
+</body>
+</html>
