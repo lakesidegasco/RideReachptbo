@@ -12,7 +12,6 @@
 
   <meta property="og:title" content="RideReach — Hyper-local In-Car Advertising">
   <meta property="og:description" content="Target local riders on premium in-car tablets. Flexible packages for advertisers and a new earning stream for drivers.">
-  <!-- UPDATED: og image points to your uploaded hero -->
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/hero.jpg">
   <meta property="og:url" content="https://ridereach.ca/">
@@ -52,7 +51,7 @@
       user-select:none;
       white-space:nowrap;
     }
-    .btn-primary{background:var(--red); border-color:rgba(227,24,55,.55); box-shadow:var(--shadow);}
+    .btn-primary{background:var(--red); border-color:rgba(227,24,55,.55); box-shadow:var(--shadow); color:#fff;}
     .btn-primary:hover{transform:translateY(-2px); filter:brightness(1.05);}
     .btn-ghost{background:transparent; border-color:#363636; color:var(--text);}
     .btn-ghost:hover{border-color:#555; transform:translateY(-2px);}
@@ -71,7 +70,6 @@
       gap:14px;
     }
     .brand{display:flex; align-items:center; gap:.75rem;}
-    /* Uses your root logo.png */
     .brand img{height:36px; width:auto; display:block;}
     .brand b{font-weight:800; letter-spacing:.2px;}
     .menu{display:flex; gap:.7rem; align-items:center;}
@@ -125,8 +123,6 @@
 
     /* Hero */
     .hero{position:relative; isolation:isolate; padding:88px 0 70px; border-top:none;}
-
-    /* UPDATED: hero background uses your uploaded hero.jpg (and mobile-friendly: no fixed) */
     .hero::before{
       content:"";
       position:absolute;
@@ -135,8 +131,6 @@
       background:url("assets/hero.jpg") center/cover no-repeat;
       opacity:.28;
     }
-
-    /* Overlay */
     .hero::after{
       content:""; position:absolute; inset:0; z-index:-1;
       background:
@@ -145,7 +139,6 @@
         linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.2));
       pointer-events:none;
     }
-
     .heroGrid{display:grid; grid-template-columns:1.15fr .85fr; gap:34px; align-items:center;}
     @media (max-width:900px){ .heroGrid{grid-template-columns:1fr;} }
 
@@ -160,7 +153,7 @@
       background:rgba(0,0,0,.18);
     }
 
-    /* NEW: Drivers hero image banner class (for your Driver graphic) */
+    /* Drivers banner class */
     .driverBanner{
       max-width:520px;
       margin-left:auto;
@@ -168,6 +161,51 @@
     @media (max-width:900px){
       .driverBanner{max-width:640px;margin-inline:auto;}
     }
+
+    /* ✅ PACKAGES AS IMAGES */
+    .pkgGrid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    @media (max-width:1100px){ .pkgGrid{grid-template-columns:1fr 1fr;} }
+    @media (max-width:700px){ .pkgGrid{grid-template-columns:1fr;} }
+
+    .pkg{
+      padding:0;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .pkgMedia{
+      position:relative;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:#0c0c0d;
+    }
+    .pkgMedia img{display:block;width:100%;height:auto}
+    .pkgBody{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .pkgTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .pkgTier{font-weight:900; letter-spacing:.3px;}
+    .pkgTag{
+      font-size:.82rem;
+      padding:.25rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      color:rgba(242,242,242,.78);
+    }
+    .pkgActions{margin-top:6px;}
   </style>
 </head>
 
@@ -183,9 +221,7 @@
     <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">☰</button>
 
     <nav class="menu" id="menu">
-      <a href="#about">About</a>
-      <a href="#how">How It Works</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#pricing">Packages</a>
       <a href="#drivers">Drivers</a>
       <a class="btn btn-primary" href="#contact">Request Pricing</a>
     </nav>
@@ -194,7 +230,7 @@
 
 <main id="top">
 
-  <!-- HERO (uses assets/hero.jpg as background) -->
+  <!-- HERO -->
   <section class="hero">
     <div class="container heroGrid">
       <div>
@@ -210,32 +246,148 @@
         </p>
 
         <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:14px">
-          <a class="btn btn-primary" href="#contact">Request Pricing</a>
-          <a class="btn btn-ghost" href="#pricing">View Packages</a>
+          <a class="btn btn-primary" href="#pricing">View Packages</a>
+          <a class="btn btn-ghost" href="#contact">Request Pricing</a>
         </div>
       </div>
 
-      <!-- OPTIONAL: if you also want a visible hero-side image, drop one in assets/screen.jpg -->
       <div class="card">
         <h2 style="margin:0 0 10px">Modern local advertising people actually see</h2>
         <p class="lead" style="margin:0 0 14px">Perfect for restaurants, gyms, salons, trades, real estate, retail, events, and more.</p>
         <div class="media">
-          <!-- Put your tablet/ad photo here if you want: assets/screen.jpg -->
           <img src="assets/screen.jpg" alt="RideReach in-vehicle screen" onerror="this.style.display='none'">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DRIVERS (uses your Driver graphic) -->
+  <!-- ✅ PACKAGES (IMAGES + SELECT BUTTONS) -->
+  <section id="pricing">
+    <div class="container">
+      <h2>Packages</h2>
+      <p class="lead">Choose a package below. Tap Select and your request will auto-fill in the form.</p>
+
+      <div class="pkgGrid">
+
+        <div class="card pkg">
+          <div class="pkgMedia">
+            <img src="assets/pkg-bronze.jpg" alt="Bronze Package" onerror="this.style.display='none'">
+          </div>
+          <div class="pkgBody">
+            <div class="pkgTop">
+              <div class="pkgTier">Bronze</div>
+              <span class="pkgTag">Starter</span>
+            </div>
+            <div class="pkgActions">
+              <a class="btn btn-primary" href="#contact" onclick="selectPackage('Bronze')">Select Bronze</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pkg">
+          <div class="pkgMedia">
+            <img src="assets/pkg-silver.jpg" alt="Silver Package" onerror="this.style.display='none'">
+          </div>
+          <div class="pkgBody">
+            <div class="pkgTop">
+              <div class="pkgTier">Silver</div>
+              <span class="pkgTag">Popular</span>
+            </div>
+            <div class="pkgActions">
+              <a class="btn btn-primary" href="#contact" onclick="selectPackage('Silver')">Select Silver</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pkg">
+          <div class="pkgMedia">
+            <img src="assets/pkg-gold.jpg" alt="Gold Package" onerror="this.style.display='none'">
+          </div>
+          <div class="pkgBody">
+            <div class="pkgTop">
+              <div class="pkgTier">Gold</div>
+              <span class="pkgTag">High Frequency</span>
+            </div>
+            <div class="pkgActions">
+              <a class="btn btn-primary" href="#contact" onclick="selectPackage('Gold')">Select Gold</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pkg">
+          <div class="pkgMedia">
+            <img src="assets/pkg-platinum.jpg" alt="Platinum Package" onerror="this.style.display='none'">
+          </div>
+          <div class="pkgBody">
+            <div class="pkgTop">
+              <div class="pkgTier">Platinum</div>
+              <span class="pkgTag">Max Reach</span>
+            </div>
+            <div class="pkgActions">
+              <a class="btn btn-primary" href="#contact" onclick="selectPackage('Platinum')">Select Platinum</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="lead" style="margin-top:14px">
+        Upload your package images to <b>assets/</b> as:
+        <b>pkg-bronze.jpg</b>, <b>pkg-silver.jpg</b>, <b>pkg-gold.jpg</b>, <b>pkg-platinum.jpg</b>.
+      </p>
+    </div>
+  </section>
+
+  <!-- DRIVERS -->
   <section id="drivers">
     <div class="container">
       <h2>For Drivers</h2>
       <p class="lead">RideReach also creates an earning stream for drivers by running ads on in-vehicle screens.</p>
 
-      <!-- UPDATED: your uploaded Driver graphic (move/rename it to assets/driver.jpg) -->
       <div class="media driverBanner" style="margin-top:18px">
         <img src="assets/driver.jpg" alt="Join the RideReach Driver Network">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT (simple form so Select buttons have somewhere to write) -->
+  <section id="contact">
+    <div class="container">
+      <h2>Request Pricing</h2>
+      <p class="lead">Tell us what you’re promoting and we’ll reply with packages, pricing, and next steps.</p>
+
+      <div class="card" style="margin-top:18px">
+        <form onsubmit="return rrSubmit(event)" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:0">
+          <div>
+            <label for="name" style="font-weight:600;color:rgba(242,242,242,.86)">Name</label>
+            <input id="name" name="name" required placeholder="Your name"
+                   style="margin-top:6px;background:#0f0f10;border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;padding:.85rem 1rem;outline:none;width:100%;">
+          </div>
+
+          <div>
+            <label for="business" style="font-weight:600;color:rgba(242,242,242,.86)">Business Name</label>
+            <input id="business" name="business" placeholder="Business name"
+                   style="margin-top:6px;background:#0f0f10;border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;padding:.85rem 1rem;outline:none;width:100%;">
+          </div>
+
+          <div style="grid-column:span 2">
+            <label for="email" style="font-weight:600;color:rgba(242,242,242,.86)">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@email.com"
+                   style="margin-top:6px;background:#0f0f10;border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;padding:.85rem 1rem;outline:none;width:100%;">
+          </div>
+
+          <div style="grid-column:span 2">
+            <label for="message" style="font-weight:600;color:rgba(242,242,242,.86)">Message</label>
+            <textarea id="message" name="message" required
+              placeholder="What do you want to advertise? Which package are you leaning toward?"
+              style="margin-top:6px;min-height:140px;resize:vertical;background:#0f0f10;border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;padding:.85rem 1rem;outline:none;width:100%;"></textarea>
+          </div>
+
+          <div style="grid-column:span 2;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <button class="btn btn-primary" type="submit">Send Request</button>
+            <span id="rrNote" style="color:rgba(242,242,242,.72)"></span>
+          </div>
+        </form>
       </div>
     </div>
   </section>
@@ -254,7 +406,23 @@
     menu.classList.remove('open');
     toggle.setAttribute('aria-expanded','false');
   }));
+
+  // Select package -> auto-fill message
+  function selectPackage(tier){
+    const msg = document.getElementById('message');
+    if (!msg) return;
+    msg.value = `I'm interested in the ${tier} package.\n\nBusiness type:\nGoal (awareness / promo / growth):\nBudget range:\nStart date:\n`;
+  }
+
+  // Dummy submit
+  function rrSubmit(e){
+    e.preventDefault();
+    document.getElementById('rrNote').textContent = "Thanks — request received.";
+    e.target.reset();
+    return false;
+  }
 </script>
 
 </body>
 </html>
+```0
