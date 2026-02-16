@@ -57,7 +57,7 @@
     .btn-ghost{background:transparent; border-color:#363636; color:var(--text);}
     .btn-ghost:hover{border-color:#555; transform:translateY(-2px);}
 
-    /* Sticky header (ShinePros feel) */
+    /* Sticky header */
     header{
       position:sticky; top:0; z-index:50;
       backdrop-filter:saturate(1.2) blur(10px);
@@ -169,21 +169,6 @@
     .driverBanner{max-width:640px;margin-inline:auto;}
     @media (min-width:901px){ .driverBanner{max-width:760px} }
 
-    /* ✅ FIX: force driver media to always have visible height + stable painting */
-    #drivers .driverBanner{
-      min-height:220px;
-      display:block;
-      transform:translateZ(0);
-    }
-    #drivers .driverBanner img{
-      display:block;
-      width:100%;
-      height:auto;
-      max-height:560px;
-      object-fit:contain;
-      background:#0c0c0d;
-    }
-
     /* Contact */
     form{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px;}
     .full{grid-column:span 2;}
@@ -266,7 +251,8 @@
 <header>
   <div class="container nav">
     <a class="brand" href="#top">
-      <img src="/logo.png" alt="RideReach Logo" onerror="this.onerror=null;this.src='logo.png';">
+      <!-- ridereach.ca: use relative path -->
+      <img src="logo.png" alt="RideReach Logo">
       <b>RideReach</b>
     </a>
 
@@ -327,8 +313,8 @@
         <h2 style="margin:0 0 10px">Modern local advertising people actually see</h2>
         <p class="lead" style="margin:0 0 14px">Perfect for restaurants, gyms, salons, trades, real estate, retail, events, and more.</p>
         <div class="media">
-          <img src="assets/screen.jpg" alt="RideReach in-vehicle screen"
-               onerror="this.onerror=null;this.src='assets/hero.jpg';">
+          <!-- This is ONLY screen.jpg (no fallback to hero) -->
+          <img src="assets/screen.jpg" alt="RideReach in-vehicle screen">
         </div>
       </div>
     </div>
@@ -342,9 +328,10 @@
         RideReach is a hyper-local in-car advertising network built for repeated exposure — in front of real passengers, in real neighborhoods.
       </p>
 
+      <!-- Optional image: only shows if assets/about.jpg exists -->
       <div class="media" style="margin-top:18px">
         <img src="assets/about.jpg" alt="RideReach local exposure"
-             onerror="this.onerror=null;this.src='assets/hero.jpg';">
+             onerror="this.closest('.media')?.remove();">
       </div>
 
       <div class="featureGrid">
@@ -370,14 +357,15 @@
       <h2>How It Works</h2>
       <p class="lead">Choose a package, send your creative, and we handle scheduling and placement.</p>
 
+      <!-- Optional image: only shows if assets/how.jpg exists -->
       <div class="media" style="margin-top:18px">
         <img src="assets/how.jpg" alt="How RideReach works"
-             onerror="this.onerror=null;this.src='assets/hero.jpg';">
+             onerror="this.closest('.media')?.remove();">
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- PACKAGES -->
   <section id="pricing">
     <div class="container">
       <h2>Packages</h2>
@@ -455,15 +443,8 @@
       <h2>For Drivers</h2>
       <p class="lead">RideReach also creates an earning stream for drivers by running ads on in-vehicle screens.</p>
 
-      <!-- ✅ FIXED: forced visible + fallback if anything goes wrong -->
       <div class="media driverBanner" style="margin-top:18px">
-        <img
-          src="assets/driver.jpg"
-          alt="Join the RideReach Driver Network"
-          loading="lazy"
-          decoding="async"
-          onerror="this.onerror=null; this.src='assets/hero.jpg';"
-        >
+        <img src="assets/driver.jpg" alt="Join the RideReach Driver Network">
       </div>
 
       <div class="featureGrid">
@@ -489,9 +470,10 @@
       <h2>Request Pricing</h2>
       <p class="lead">Tell us what you’re promoting and we’ll reply with packages, pricing, and next steps.</p>
 
+      <!-- Optional image: only shows if assets/contact.jpg exists -->
       <div class="media" style="margin-top:18px">
         <img src="assets/contact.jpg" alt="Contact RideReach"
-             onerror="this.style.display='none'">
+             onerror="this.closest('.media')?.remove();">
       </div>
 
       <div class="card" style="margin-top:18px">
