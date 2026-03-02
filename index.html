@@ -243,6 +243,53 @@
       border-color:rgba(227,24,55,.55);
       box-shadow:0 0 0 1px rgba(227,24,55,.28), var(--shadow);
     }
+
+    /* ===== WEBSITES SECTION ===== */
+    .webGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:18px;
+    }
+    @media (max-width:900px){ .webGrid{grid-template-columns:1fr;} }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      font-weight:800;
+      letter-spacing:.2px;
+      color:rgba(242,242,242,.92);
+    }
+    .kicker .dot{
+      width:10px;height:10px;border-radius:999px;
+      background:var(--red);
+      box-shadow:0 0 0 4px rgba(227,24,55,.16);
+    }
+
+    .webList{margin:0; padding-left:18px; color:rgba(242,242,242,.78); line-height:1.65;}
+    .webList li{margin:.35rem 0;}
+    .webTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .webTag{
+      font-size:.82rem;
+      padding:.25rem .7rem;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      color:rgba(242,242,242,.78);
+    }
+    .webActions{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
   </style>
 </head>
 
@@ -261,6 +308,7 @@
       <a href="#about">About</a>
       <a href="#how">How It Works</a>
       <a href="#pricing">Packages</a>
+      <a href="#websites">Websites</a>
       <a href="#drivers">Drivers</a>
       <a href="careers.html">Careers</a>
       <a class="btn btn-primary" href="#contact">Request Pricing</a>
@@ -434,6 +482,99 @@
     </div>
   </section>
 
+  <!-- WEBSITES -->
+  <section id="websites">
+    <div class="container">
+      <div class="kicker"><span class="dot"></span> Website Building</div>
+      <h2 style="margin-top:10px">Websites that turn locals into customers</h2>
+      <p class="lead">
+        Clean, fast, premium websites built for Peterborough + surrounding areas — designed to get calls, messages, and bookings.
+      </p>
+
+      <div class="featureGrid" style="margin-top:18px">
+        <div class="card">
+          <h3 style="margin:0 0 6px">⚡ Fast + Mobile-First</h3>
+          <p class="lead" style="margin-top:0">Built for speed, clarity, and a smooth mobile experience.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">📍 Local SEO Ready</h3>
+          <p class="lead" style="margin-top:0">Service pages, area coverage, and structure that Google understands.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">📞 Lead Capture Built-In</h3>
+          <p class="lead" style="margin-top:0">Click-to-call, quote forms, and trust builders that convert.</p>
+        </div>
+      </div>
+
+      <div class="webGrid">
+        <div class="card">
+          <div class="webTop">
+            <div style="font-weight:900;letter-spacing:.2px;">Starter Site</div>
+            <span class="webTag">Launch Fast</span>
+          </div>
+          <p class="lead" style="margin-top:0">Perfect for solo operators who need a clean online presence quickly.</p>
+          <ul class="webList">
+            <li>One-page website</li>
+            <li>Click-to-call + contact form</li>
+            <li>Basic local SEO setup</li>
+            <li>Launch support</li>
+          </ul>
+          <div class="webActions">
+            <a class="btn btn-primary" href="#contact" onclick="selectWebsitePackage('Starter Site')">Select Starter</a>
+            <a class="btn btn-ghost" href="#contact" onclick="selectWebsitePackage('Starter Site', true)">Ask a Question</a>
+          </div>
+        </div>
+
+        <div class="card featured">
+          <div class="webTop">
+            <div style="font-weight:900;letter-spacing:.2px;">Business Site</div>
+            <span class="webTag">Most Popular</span>
+          </div>
+          <p class="lead" style="margin-top:0">For companies with multiple services + service areas.</p>
+          <ul class="webList">
+            <li>4–6 pages (services + areas)</li>
+            <li>Gallery / reviews / trust sections</li>
+            <li>SEO foundations + analytics</li>
+            <li>Conversion-focused layout</li>
+          </ul>
+          <div class="webActions">
+            <a class="btn btn-primary" href="#contact" onclick="selectWebsitePackage('Business Site')">Select Business</a>
+            <a class="btn btn-ghost" href="#contact" onclick="selectWebsitePackage('Business Site', true)">Ask a Question</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="webTop">
+            <div style="font-weight:900;letter-spacing:.2px;">Premium + Growth</div>
+            <span class="webTag">Ranking + Leads</span>
+          </div>
+          <p class="lead" style="margin-top:0">For brands that want consistent improvements and momentum.</p>
+          <ul class="webList">
+            <li>Full build + monthly updates</li>
+            <li>New pages / content additions</li>
+            <li>SEO improvements over time</li>
+            <li>Conversion tuning</li>
+          </ul>
+          <div class="webActions">
+            <a class="btn btn-primary" href="#contact" onclick="selectWebsitePackage('Premium + Growth')">Select Premium</a>
+            <a class="btn btn-ghost" href="#contact" onclick="selectWebsitePackage('Premium + Growth', true)">Ask a Question</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3 style="margin:0 0 6px">Want RideReach + a Website?</h3>
+        <p class="lead" style="margin-top:0">
+          If you’re advertising on RideReach, we can also build your landing page so passengers can scan, click, and book instantly.
+        </p>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:12px">
+          <a class="btn btn-primary" href="#contact" onclick="selectWebsitePackage('Website + RideReach Bundle')">Request Bundle</a>
+          <a class="btn btn-ghost" href="#contact">Talk to Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- DRIVERS -->
   <section id="drivers">
     <div class="container">
@@ -491,9 +632,10 @@
 
           <div class="full">
             <label for="message">Message</label>
-            <textarea id="message" name="Message" required placeholder="What do you want to advertise? Which package are you leaning toward?"></textarea>
+            <textarea id="message" name="Message" required placeholder="Are you looking for RideReach advertising, a website build, or both? Tell us what you need."></textarea>
           </div>
 
+          <input type="hidden" id="serviceType" name="Service Type" value="">
           <input type="hidden" name="_subject" value="New RideReach Pricing Request">
           <input type="hidden" name="_captcha" value="false">
 
@@ -530,6 +672,8 @@
   // Select package -> auto-fill message in contact form
   function selectPackage(tier){
     const msg = document.getElementById('message');
+    const st = document.getElementById('serviceType');
+    if (st) st.value = "RideReach Advertising";
     if (!msg) return;
     msg.value =
 `I'm interested in the ${tier} package.
@@ -538,6 +682,25 @@ Business type:
 Goal (awareness / promo / growth):
 Budget range:
 Start date:
+`;
+  }
+
+  // Website package -> auto-fill message in contact form
+  function selectWebsitePackage(pkg, question=false){
+    const msg = document.getElementById('message');
+    const st = document.getElementById('serviceType');
+    if (st) st.value = "Website Build";
+    if (!msg) return;
+
+    msg.value =
+`I'm interested in RideReach Website Building (${pkg}).${question ? " I have a question before moving forward." : ""}
+
+Business name:
+Industry:
+Current website (if any):
+Service area:
+Goal (calls / bookings / credibility / ranking):
+Timeline:
 `;
   }
 
