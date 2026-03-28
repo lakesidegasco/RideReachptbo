@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Featured Partners | RideReach</title>
-  <meta name="description" content="Explore the featured partners connected to RideReach — local brands, businesses, and organizations growing with in-vehicle advertising in Peterborough and surrounding areas." />
+  <meta name="description" content="Explore the featured partners connected to RideReach — local businesses and brands growing with in-vehicle advertising in Peterborough and surrounding areas." />
   <meta name="theme-color" content="#0c0d12" />
   <meta name="color-scheme" content="dark" />
 
@@ -32,7 +32,6 @@
       --bg:#0a0b10;
       --bg-soft:#11131a;
       --panel:rgba(255,255,255,.05);
-      --panel-strong:rgba(255,255,255,.08);
       --text:#f5f7fb;
       --muted:rgba(255,255,255,.72);
       --muted-2:rgba(255,255,255,.56);
@@ -45,15 +44,14 @@
       --radius:24px;
       --max:1320px;
       --header-height:82px;
+      --marquee-duration: 28s;
+      --marquee-start: 100vw;
+      --marquee-end: -2200px;
     }
 
-    *{
-      box-sizing:border-box;
-    }
+    *{ box-sizing:border-box; }
 
-    html{
-      scroll-behavior:smooth;
-    }
+    html{ scroll-behavior:smooth; }
 
     body{
       margin:0;
@@ -74,11 +72,6 @@
     a{
       color:inherit;
       text-decoration:none;
-    }
-
-    button,
-    a{
-      -webkit-tap-highlight-color:transparent;
     }
 
     .container{
@@ -178,7 +171,7 @@
       color:var(--muted);
       font-size:.95rem;
       font-weight:600;
-      transition:color .2s ease, transform .2s ease;
+      transition:color .2s ease;
     }
 
     .nav-links a:hover,
@@ -205,7 +198,6 @@
     .eyebrow{
       display:inline-flex;
       align-items:center;
-      gap:10px;
       min-height:38px;
       padding:0 14px;
       border-radius:999px;
@@ -320,21 +312,22 @@
     .partners-wrap{
       position:relative;
       overflow:hidden;
-      padding:12px 0 8px;
+      padding:18px 0 14px;
+      min-height:170px;
       mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
       -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
     }
 
     .partners-track{
+      position:absolute;
+      top:18px;
+      left:0;
       display:flex;
       align-items:center;
       gap:24px;
       width:max-content;
       will-change:transform;
-    }
-
-    .partners-wrap.is-ready .partners-track{
-      animation:partners-scroll var(--marquee-duration, 30s) linear infinite;
+      animation:partner-scroll-single var(--marquee-duration) linear infinite;
     }
 
     .partners-wrap:hover .partners-track{
@@ -505,16 +498,11 @@
       align-items:center;
       justify-content:center;
       font-weight:700;
-      transition:transform .2s ease, opacity .2s ease, border-color .2s ease, background .2s ease;
+      transition:transform .2s ease, box-shadow .2s ease;
     }
 
     .btn:hover{
       transform:translateY(-2px);
-    }
-
-    .btn:focus-visible{
-      outline:none;
-      box-shadow:0 0 0 3px rgba(255,90,115,.22);
     }
 
     .btn-primary{
@@ -543,12 +531,12 @@
       flex-wrap:wrap;
     }
 
-    @keyframes partners-scroll{
+    @keyframes partner-scroll-single{
       from{
-        transform:translate3d(0,0,0);
+        transform:translateX(var(--marquee-start));
       }
       to{
-        transform:translate3d(calc(-1 * var(--marquee-distance, 0px)),0,0);
+        transform:translateX(var(--marquee-end));
       }
     }
 
@@ -588,6 +576,10 @@
         grid-template-columns:1fr;
       }
 
+      .partners-wrap{
+        min-height:146px;
+      }
+
       .partner-card{
         width:224px;
         height:118px;
@@ -607,6 +599,10 @@
     @media (max-width: 560px){
       .container{
         width:min(calc(100% - 20px), var(--max));
+      }
+
+      .partners-wrap{
+        min-height:128px;
       }
 
       .partner-card{
@@ -630,14 +626,11 @@
         scroll-behavior:auto;
       }
 
-      .partners-wrap.is-ready .partners-track{
+      .partners-track{
         animation:none;
-      }
-
-      .partner-card,
-      .btn,
-      .link-card{
-        transition:none;
+        position:relative;
+        left:auto;
+        top:auto;
       }
     }
   </style>
@@ -693,16 +686,16 @@
                 <span>Every logo opens directly to the partner website or Instagram.</span>
               </div>
               <div class="stat">
-                <strong>Looping banner</strong>
-                <span>Smooth right-to-left marquee built for a premium presentation.</span>
+                <strong>Single row</strong>
+                <span>One clean line of logos with no duplicate partner cards visible.</span>
+              </div>
+              <div class="stat">
+                <strong>Right to left</strong>
+                <span>The banner moves cleanly across the page from right to left.</span>
               </div>
               <div class="stat">
                 <strong>Responsive</strong>
                 <span>Designed to scale properly across desktop, tablet, and mobile.</span>
-              </div>
-              <div class="stat">
-                <strong>Expandable</strong>
-                <span>Easy to keep adding partners as RideReach grows.</span>
               </div>
             </div>
           </aside>
@@ -716,12 +709,12 @@
           <h2 id="partner-banner-title">Featured Partner Banner</h2>
           <p>
             Hover to pause the motion. Click any logo to open that partner in a new tab.
-            The marquee duplicates itself automatically in JavaScript, so you only maintain one clean set of logos.
+            This version uses one single track only, with no duplicated logo set.
           </p>
         </div>
 
-        <div class="partners-wrap" data-marquee>
-          <div class="partners-track">
+        <div class="partners-wrap">
+          <div class="partners-track" id="partnersTrack">
             <a class="partner-card" href="https://www.lostcannabis.ca/peterborough/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lost Cannabis">
               <img src="assets/partners/Lost-cannabis.jpg" alt="Lost Cannabis logo" loading="lazy" />
             </a>
@@ -760,26 +753,23 @@
 
         <div class="grid info-grid">
           <article class="info-card">
-            <h3>How the banner works</h3>
+            <h3>No duplicates</h3>
             <p>
-              This file keeps only one real set of partner logos in the HTML. JavaScript clones that set after load
-              so the marquee loops cleanly without you manually duplicating the markup.
+              This build uses one real set of logos only. You will not see repeated partner cards sitting in the strip.
             </p>
           </article>
 
           <article class="info-card">
-            <h3>Best logo setup</h3>
+            <h3>Correct movement</h3>
             <p>
-              PNG and SVG are best, but your current JPG and PNG files will still look strong because every logo sits
-              inside a dark premium card with controlled sizing and spacing.
+              The strip starts off-screen to the right and travels to the left until the full row exits the viewport.
             </p>
           </article>
 
           <article class="info-card">
-            <h3>Easy to expand later</h3>
+            <h3>Easy to edit</h3>
             <p>
-              To add more partners, duplicate one partner card inside the single source track only. The script handles
-              the seamless loop automatically.
+              To add a new partner later, just add one more logo card to the single track. No duplicate block management needed.
             </p>
           </article>
         </div>
@@ -843,82 +833,29 @@
 
   <script>
     (function () {
-      const marquee = document.querySelector('[data-marquee]');
-      if (!marquee) return;
-
-      const track = marquee.querySelector('.partners-track');
+      const track = document.getElementById('partnersTrack');
       if (!track) return;
 
-      const sourceItems = Array.from(track.children);
-      if (!sourceItems.length) return;
+      function updateMarquee() {
+        const trackWidth = track.scrollWidth;
+        const viewportWidth = window.innerWidth;
 
-      let built = false;
+        document.documentElement.style.setProperty('--marquee-start', viewportWidth + 'px');
+        document.documentElement.style.setProperty('--marquee-end', '-' + trackWidth + 'px');
 
-      function getGapPx(element) {
-        const styles = window.getComputedStyle(element);
-        return parseFloat(styles.columnGap || styles.gap || '0') || 0;
+        const speed = viewportWidth <= 560 ? 70 : viewportWidth <= 820 ? 82 : 96;
+        const totalDistance = viewportWidth + trackWidth;
+        const duration = Math.max(totalDistance / speed, 18);
+
+        document.documentElement.style.setProperty('--marquee-duration', duration + 's');
       }
 
-      function clearClones() {
-        track.querySelectorAll('[data-clone="true"]').forEach(node => node.remove());
+      window.addEventListener('load', updateMarquee);
+      window.addEventListener('resize', updateMarquee);
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(updateMarquee);
       }
-
-      function buildMarquee() {
-        marquee.classList.remove('is-ready');
-        clearClones();
-
-        const originals = Array.from(track.children).filter(item => item.dataset.clone !== 'true');
-        if (!originals.length) return;
-
-        const gap = getGapPx(track);
-        const width = originals.reduce((sum, item) => sum + item.getBoundingClientRect().width, 0) + ((originals.length - 1) * gap);
-
-        originals.forEach(item => {
-          const clone = item.cloneNode(true);
-          clone.dataset.clone = 'true';
-          clone.setAttribute('aria-hidden', 'true');
-          clone.querySelectorAll('img').forEach(img => {
-            img.removeAttribute('loading');
-          });
-          track.appendChild(clone);
-        });
-
-        const desktopSpeed = 92;
-        const tabletSpeed = 82;
-        const mobileSpeed = 72;
-
-        const speed = window.innerWidth <= 560
-          ? mobileSpeed
-          : window.innerWidth <= 820
-            ? tabletSpeed
-            : desktopSpeed;
-
-        const duration = Math.max(width / speed, 18);
-
-        track.style.setProperty('--marquee-distance', width + 'px');
-        track.style.setProperty('--marquee-duration', duration + 's');
-
-        marquee.classList.add('is-ready');
-        built = true;
-      }
-
-      let resizeTimer;
-      function handleResize() {
-        if (!built) return buildMarquee();
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(buildMarquee, 140);
-      }
-
-      function initWhenReady() {
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(buildMarquee);
-        } else {
-          buildMarquee();
-        }
-      }
-
-      window.addEventListener('load', initWhenReady);
-      window.addEventListener('resize', handleResize);
     })();
   </script>
 </body>
