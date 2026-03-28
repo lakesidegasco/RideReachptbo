@@ -857,7 +857,7 @@
         strong.textContent = partner.name;
 
         const span = document.createElement("span");
-        span.textContent = partner.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+        span.textContent = partner.url.replace(/^https?:\\/\\//, "").replace(/\\/$/, "");
 
         a.appendChild(strong);
         a.appendChild(span);
@@ -896,9 +896,8 @@
 
           const first = track.firstElementChild;
           if (first) {
-            const firstWidth = first.offsetWidth;
             const gap = parseFloat(getComputedStyle(track).gap || "0");
-            const firstTotal = firstWidth + gap;
+            const firstTotal = first.offsetWidth + gap;
 
             if (-x >= firstTotal) {
               x += firstTotal;
@@ -917,22 +916,10 @@
         animationId = requestAnimationFrame(step);
       }
 
-      shell.addEventListener("mouseenter", () => {
-        paused = true;
-      });
-
-      shell.addEventListener("mouseleave", () => {
-        paused = false;
-      });
-
-      shell.addEventListener("focusin", () => {
-        paused = true;
-      });
-
-      shell.addEventListener("focusout", () => {
-        paused = false;
-      });
-
+      shell.addEventListener("mouseenter", () => paused = true);
+      shell.addEventListener("mouseleave", () => paused = false);
+      shell.addEventListener("focusin", () => paused = true);
+      shell.addEventListener("focusout", () => paused = false);
       window.addEventListener("resize", updateSpeed);
 
       renderInitial();
