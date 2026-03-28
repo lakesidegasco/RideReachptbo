@@ -4,32 +4,56 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Featured Partners | RideReach</title>
-  <meta name="description" content="Featured partners of RideReach — local businesses and brands connected to the RideReach advertising network." />
+  <meta name="description" content="Explore the featured partners connected to RideReach — local brands, businesses, and organizations growing with in-vehicle advertising in Peterborough and surrounding areas." />
   <meta name="theme-color" content="#0c0d12" />
+  <meta name="color-scheme" content="dark" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Featured Partners | RideReach" />
+  <meta property="og:description" content="Featured partners connected to the RideReach advertising network." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ridereach.ca/featured-partners.html" />
+  <meta property="og:image" content="https://ridereach.ca/assets/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Featured Partners | RideReach" />
+  <meta name="twitter:description" content="Featured partners connected to the RideReach advertising network." />
+  <meta name="twitter:image" content="https://ridereach.ca/assets/logo.png" />
+
+  <link rel="canonical" href="https://ridereach.ca/featured-partners.html" />
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root{
-      --bg:#0b0c10;
-      --bg-2:#11131a;
+      --bg:#0a0b10;
+      --bg-soft:#11131a;
       --panel:rgba(255,255,255,.05);
-      --panel-2:rgba(255,255,255,.08);
+      --panel-strong:rgba(255,255,255,.08);
       --text:#f5f7fb;
       --muted:rgba(255,255,255,.72);
+      --muted-2:rgba(255,255,255,.56);
       --line:rgba(255,255,255,.09);
+      --line-strong:rgba(255,255,255,.16);
       --red:#e31837;
       --red-2:#ff5a73;
-      --max:1320px;
       --shadow:0 18px 50px rgba(0,0,0,.35);
+      --shadow-soft:0 10px 28px rgba(0,0,0,.24);
       --radius:24px;
+      --max:1320px;
+      --header-height:82px;
     }
 
-    *{box-sizing:border-box}
+    *{
+      box-sizing:border-box;
+    }
 
-    html{scroll-behavior:smooth}
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
@@ -37,7 +61,14 @@
       color:var(--text);
       background:
         radial-gradient(circle at top center, rgba(227,24,55,.14), transparent 28%),
-        linear-gradient(180deg, #090a0e 0%, #0e1016 45%, #11141b 100%);
+        linear-gradient(180deg, #090a0e 0%, #0f1118 44%, #11141b 100%);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
     }
 
     a{
@@ -45,9 +76,9 @@
       text-decoration:none;
     }
 
-    img{
-      max-width:100%;
-      display:block;
+    button,
+    a{
+      -webkit-tap-highlight-color:transparent;
     }
 
     .container{
@@ -55,42 +86,84 @@
       margin:0 auto;
     }
 
-    /* Header */
+    .skip-link{
+      position:absolute;
+      left:-9999px;
+      top:auto;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+
+    .skip-link:focus{
+      left:16px;
+      top:16px;
+      width:auto;
+      height:auto;
+      padding:12px 16px;
+      border-radius:12px;
+      background:#fff;
+      color:#000;
+      z-index:9999;
+      font-weight:700;
+    }
+
     .topbar{
       position:sticky;
       top:0;
       z-index:1000;
       backdrop-filter:blur(14px);
-      background:rgba(8,9,12,.78);
+      -webkit-backdrop-filter:blur(14px);
+      background:rgba(8,9,12,.8);
       border-bottom:1px solid var(--line);
     }
 
     .nav{
-      min-height:78px;
+      min-height:var(--header-height);
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:20px;
+      gap:24px;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:12px;
+      min-width:0;
       font-weight:800;
       letter-spacing:.2px;
     }
 
     .brand-mark{
-      width:44px;
-      height:44px;
+      width:46px;
+      height:46px;
+      flex:0 0 46px;
       border-radius:14px;
       display:grid;
       place-items:center;
       background:linear-gradient(135deg,var(--red),var(--red-2));
-      box-shadow:var(--shadow);
-      font-weight:800;
       color:#fff;
+      font-weight:800;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .brand-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+
+    .brand-text strong{
+      font-size:1rem;
+      color:#fff;
+    }
+
+    .brand-text span{
+      color:var(--muted-2);
+      font-size:.8rem;
+      font-weight:600;
+      margin-top:2px;
     }
 
     .nav-links{
@@ -98,13 +171,14 @@
       align-items:center;
       gap:18px;
       flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .nav-links a{
       color:var(--muted);
       font-size:.95rem;
       font-weight:600;
-      transition:color .2s ease;
+      transition:color .2s ease, transform .2s ease;
     }
 
     .nav-links a:hover,
@@ -113,29 +187,33 @@
     }
 
     .nav-cta{
-      padding:12px 16px;
+      min-height:46px;
+      padding:0 16px;
       border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       background:linear-gradient(135deg,var(--red),var(--red-2));
       color:#fff !important;
       box-shadow:0 10px 24px rgba(227,24,55,.22);
     }
 
-    /* Hero */
     .hero{
-      padding:88px 0 42px;
+      padding:88px 0 38px;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:10px 14px;
+      min-height:38px;
+      padding:0 14px;
       border-radius:999px;
       border:1px solid var(--line);
       background:rgba(255,255,255,.03);
       color:#ffd3db;
-      font-size:.84rem;
-      font-weight:700;
+      font-size:.82rem;
+      font-weight:800;
       letter-spacing:.08em;
       text-transform:uppercase;
     }
@@ -148,37 +226,40 @@
       margin-top:22px;
     }
 
-    .hero h1{
+    .hero-copy h1{
       margin:0 0 14px;
-      font-size:clamp(2.4rem, 6vw, 4.8rem);
-      line-height:.96;
+      max-width:820px;
+      font-size:clamp(2.45rem, 6vw, 5rem);
+      line-height:.95;
       letter-spacing:-.05em;
-      max-width:780px;
     }
 
-    .hero p{
+    .hero-copy p{
       margin:0;
       max-width:760px;
       color:var(--muted);
-      font-size:1.06rem;
-      line-height:1.8;
+      font-size:1.05rem;
+      line-height:1.82;
     }
 
     .hero-card{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
       border:1px solid var(--line);
       border-radius:var(--radius);
       padding:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
       box-shadow:var(--shadow);
     }
 
-    .hero-card h3{
-      margin:0 0 8px;
-      font-size:1rem;
+    .hero-card h2{
+      margin:0 0 10px;
+      font-size:1.05rem;
       letter-spacing:-.02em;
     }
 
-    .hero-card p{
+    .hero-card > p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.72;
       font-size:.98rem;
     }
 
@@ -190,62 +271,70 @@
     }
 
     .stat{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      border-radius:18px;
+      min-height:92px;
       padding:18px;
-      min-height:94px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(255,255,255,.03);
     }
 
     .stat strong{
       display:block;
       margin-bottom:6px;
-      font-size:1.15rem;
       color:#fff;
+      font-size:1.12rem;
     }
 
-    /* Marquee section */
+    .stat span{
+      color:var(--muted);
+      line-height:1.5;
+      font-size:.94rem;
+    }
+
     .section{
-      padding:26px 0 88px;
+      padding:24px 0 92px;
     }
 
     .section-head{
       display:flex;
       align-items:end;
       justify-content:space-between;
-      gap:20px;
+      gap:24px;
       margin-bottom:24px;
     }
 
     .section-head h2{
       margin:0;
       font-size:clamp(1.7rem, 4vw, 2.7rem);
-      letter-spacing:-.03em;
+      letter-spacing:-.035em;
+      line-height:1.02;
     }
 
     .section-head p{
       margin:0;
-      max-width:700px;
+      max-width:720px;
       color:var(--muted);
-      line-height:1.75;
+      line-height:1.78;
     }
 
     .partners-wrap{
       position:relative;
-      padding:16px 0;
       overflow:hidden;
-      mask-image:linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
-      -webkit-mask-image:linear-gradient(to right, transparent 0, black 8%, black 92%, transparent 100%);
+      padding:12px 0 8px;
+      mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
     }
 
     .partners-track{
-      width:max-content;
       display:flex;
       align-items:center;
       gap:24px;
-      animation:partners-scroll-left 34s linear infinite;
+      width:max-content;
       will-change:transform;
-      padding:10px 0;
+    }
+
+    .partners-wrap.is-ready .partners-track{
+      animation:partners-scroll var(--marquee-duration, 30s) linear infinite;
     }
 
     .partners-wrap:hover .partners-track{
@@ -259,12 +348,11 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:20px;
+      padding:18px 20px;
       border-radius:24px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       border:1px solid var(--line);
-      box-shadow:0 12px 40px rgba(0,0,0,.24);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      box-shadow:0 12px 38px rgba(0,0,0,.24);
       transition:
         transform .25s ease,
         border-color .25s ease,
@@ -274,34 +362,48 @@
 
     .partner-card:hover{
       transform:translateY(-4px);
-      border-color:rgba(227,24,55,.45);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.085), rgba(255,255,255,.045));
-      box-shadow:0 20px 44px rgba(0,0,0,.32);
+      border-color:rgba(227,24,55,.48);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
+      box-shadow:0 20px 46px rgba(0,0,0,.32);
+    }
+
+    .partner-card:focus-visible{
+      outline:none;
+      border-color:rgba(255,90,115,.8);
+      box-shadow:0 0 0 3px rgba(255,90,115,.2), 0 20px 46px rgba(0,0,0,.32);
     }
 
     .partner-card img{
-      max-width:100%;
-      max-height:88px;
       width:auto;
       height:auto;
+      max-width:100%;
+      max-height:88px;
       object-fit:contain;
       filter:drop-shadow(0 4px 12px rgba(0,0,0,.18));
     }
 
-    /* Notes / CTA */
-    .info-grid{
+    .partners-note{
+      margin-top:18px;
+      color:var(--muted-2);
+      font-size:.92rem;
+      line-height:1.65;
+    }
+
+    .grid{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
       gap:22px;
       margin-top:34px;
     }
 
+    .info-grid{
+      grid-template-columns:repeat(3,1fr);
+    }
+
     .info-card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
       border-radius:24px;
       padding:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
       box-shadow:var(--shadow);
     }
 
@@ -315,6 +417,48 @@
       margin:0;
       color:var(--muted);
       line-height:1.75;
+    }
+
+    .info-card code{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:.92em;
+      color:#fff;
+      background:rgba(255,255,255,.06);
+      padding:.18em .45em;
+      border-radius:8px;
+    }
+
+    .links-grid{
+      grid-template-columns:repeat(2,1fr);
+      margin-top:22px;
+    }
+
+    .link-card{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      background:rgba(255,255,255,.03);
+      transition:border-color .25s ease, transform .25s ease, background .25s ease;
+    }
+
+    .link-card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(227,24,55,.42);
+      background:rgba(255,255,255,.045);
+    }
+
+    .link-card strong{
+      display:block;
+      margin-bottom:6px;
+      font-size:1.02rem;
+      color:#fff;
+    }
+
+    .link-card span{
+      display:block;
+      color:var(--muted);
+      line-height:1.7;
+      word-break:break-word;
     }
 
     .cta{
@@ -332,10 +476,11 @@
       box-shadow:var(--shadow);
     }
 
-    .cta h3{
+    .cta h2{
       margin:0 0 10px;
       font-size:1.7rem;
       letter-spacing:-.03em;
+      line-height:1.04;
     }
 
     .cta p{
@@ -348,8 +493,8 @@
     .cta-actions{
       display:flex;
       justify-content:flex-end;
-      gap:14px;
       flex-wrap:wrap;
+      gap:14px;
     }
 
     .btn{
@@ -360,11 +505,16 @@
       align-items:center;
       justify-content:center;
       font-weight:700;
-      transition:transform .2s ease, opacity .2s ease, border-color .2s ease;
+      transition:transform .2s ease, opacity .2s ease, border-color .2s ease, background .2s ease;
     }
 
     .btn:hover{
       transform:translateY(-2px);
+    }
+
+    .btn:focus-visible{
+      outline:none;
+      box-shadow:0 0 0 3px rgba(255,90,115,.22);
     }
 
     .btn-primary{
@@ -374,12 +524,11 @@
     }
 
     .btn-secondary{
-      border:1px solid var(--line);
+      border:1px solid var(--line-strong);
       background:rgba(255,255,255,.04);
       color:#fff;
     }
 
-    /* Footer */
     .footer{
       border-top:1px solid var(--line);
       padding:28px 0 42px;
@@ -394,19 +543,20 @@
       flex-wrap:wrap;
     }
 
-    @keyframes partners-scroll-left{
+    @keyframes partners-scroll{
       from{
-        transform:translateX(0);
+        transform:translate3d(0,0,0);
       }
       to{
-        transform:translateX(-50%);
+        transform:translate3d(calc(-1 * var(--marquee-distance, 0px)),0,0);
       }
     }
 
     @media (max-width: 1040px){
       .hero-grid,
       .cta,
-      .info-grid{
+      .info-grid,
+      .links-grid{
         grid-template-columns:1fr;
       }
 
@@ -426,12 +576,12 @@
     @media (max-width: 820px){
       .nav{
         padding:14px 0;
-        flex-direction:column;
         align-items:flex-start;
+        flex-direction:column;
       }
 
       .hero{
-        padding-top:58px;
+        padding-top:56px;
       }
 
       .hero-stats{
@@ -451,11 +601,14 @@
 
       .partners-track{
         gap:18px;
-        animation-duration:28s;
       }
     }
 
     @media (max-width: 560px){
+      .container{
+        width:min(calc(100% - 20px), var(--max));
+      }
+
       .partner-card{
         width:190px;
         height:102px;
@@ -469,23 +622,42 @@
 
       .partners-track{
         gap:14px;
-        animation-duration:24s;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{
+        scroll-behavior:auto;
+      }
+
+      .partners-wrap.is-ready .partners-track{
+        animation:none;
+      }
+
+      .partner-card,
+      .btn,
+      .link-card{
+        transition:none;
       }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="topbar">
     <div class="container nav">
-      <a href="index.html" class="brand">
-        <div class="brand-mark">RR</div>
-        <div>RideReach</div>
+      <a href="index.html" class="brand" aria-label="RideReach Home">
+        <div class="brand-mark" aria-hidden="true">RR</div>
+        <div class="brand-text">
+          <strong>RideReach</strong>
+          <span>Featured Partners</span>
+        </div>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary">
         <a href="index.html">Home</a>
-        <a href="featured-partners.html" class="active">Featured Partners</a>
+        <a href="featured-partners.html" class="active" aria-current="page">Featured Partners</a>
         <a href="index.html#drivers">Drivers</a>
         <a href="index.html#contact">Contact</a>
         <a href="index.html#pricing" class="nav-cta">Request Pricing</a>
@@ -493,149 +665,163 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero">
       <div class="container">
         <div class="eyebrow">Featured Partners • RideReach Network</div>
 
         <div class="hero-grid">
-          <div>
+          <div class="hero-copy">
             <h1>Local brands building attention with RideReach.</h1>
             <p>
-              These are some of the businesses currently featured in the RideReach partner lineup.
-              This page gives your network stronger credibility, stronger local trust, and a cleaner way
-              to show advertisers the kinds of brands connected to the platform.
+              These are some of the businesses connected to the RideReach partner lineup. This page adds
+              credibility, supports local visibility, and gives advertisers a cleaner view of the brands
+              growing with the RideReach network.
             </p>
           </div>
 
-          <div class="hero-card">
-            <h3>Why this page matters</h3>
+          <aside class="hero-card" aria-labelledby="why-this-matters">
+            <h2 id="why-this-matters">Why this page matters</h2>
             <p>
-              Featured partners create immediate social proof. When potential advertisers see real,
-              recognizable businesses here, RideReach feels more established and more valuable.
+              Featured partners create immediate social proof. When potential advertisers see real, recognizable
+              brands here, RideReach feels more established, more trusted, and more valuable.
             </p>
 
             <div class="hero-stats">
               <div class="stat">
                 <strong>Clickable</strong>
-                Every logo opens directly to the partner website or Instagram.
+                <span>Every logo opens directly to the partner website or Instagram.</span>
               </div>
               <div class="stat">
                 <strong>Looping banner</strong>
-                Smooth continuous marquee built for a premium homepage feel.
+                <span>Smooth right-to-left marquee built for a premium presentation.</span>
               </div>
               <div class="stat">
                 <strong>Responsive</strong>
-                Scales properly for desktop, tablet, and mobile.
+                <span>Designed to scale properly across desktop, tablet, and mobile.</span>
               </div>
               <div class="stat">
                 <strong>Expandable</strong>
-                Easy to add more partners as RideReach grows.
+                <span>Easy to keep adding partners as RideReach grows.</span>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="partner-banner-title">
       <div class="container">
         <div class="section-head">
-          <h2>Featured Partner Banner</h2>
+          <h2 id="partner-banner-title">Featured Partner Banner</h2>
           <p>
             Hover to pause the motion. Click any logo to open that partner in a new tab.
-            Replace the file names below only if your asset names differ inside your site folder.
+            The marquee duplicates itself automatically in JavaScript, so you only maintain one clean set of logos.
           </p>
         </div>
 
-        <div class="partners-wrap">
+        <div class="partners-wrap" data-marquee>
           <div class="partners-track">
-
-            <!-- Set 1 -->
-            <a class="partner-card" href="https://www.lostcannabis.ca/peterborough/" target="_blank" rel="noopener noreferrer" aria-label="Lost Cannabis">
-              <img src="assets/partners/lost-cannabis.png" alt="Lost Cannabis logo">
+            <a class="partner-card" href="https://www.lostcannabis.ca/peterborough/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lost Cannabis">
+              <img src="assets/partners/Lost-cannabis.jpg" alt="Lost Cannabis logo" loading="lazy" />
             </a>
 
-            <a class="partner-card" href="https://lakesidegascompanyinc.ca/" target="_blank" rel="noopener noreferrer" aria-label="Lakeside Gas Company Incorporated">
-              <img src="assets/partners/lakeside-gas.png" alt="Lakeside Gas Company logo">
+            <a class="partner-card" href="https://lakesidegascompanyinc.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lakeside Gas Company Incorporated">
+              <img src="assets/partners/lakeside-gas.png" alt="Lakeside Gas Company logo" loading="lazy" />
             </a>
 
-            <a class="partner-card" href="https://allin1propertymanagement.ca/" target="_blank" rel="noopener noreferrer" aria-label="All In 1 Property Management">
-              <img src="assets/partners/allin1.png" alt="All In 1 Property Management logo">
+            <a class="partner-card" href="https://allin1propertymanagement.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit All In 1 Property Management">
+              <img src="assets/partners/allin1.jpg" alt="All In 1 Property Management logo" loading="lazy" />
             </a>
 
-            <a class="partner-card" href="https://www.bbkstunts.ca/" target="_blank" rel="noopener noreferrer" aria-label="BBK Stunts">
-              <img src="assets/partners/bbk-stunts.png" alt="BBK Stunts logo">
+            <a class="partner-card" href="https://www.bbkstunts.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit BBK Stunts">
+              <img src="assets/partners/bbk-stunts.jpg" alt="BBK Stunts logo" loading="lazy" />
             </a>
 
-            <a class="partner-card" href="https://www.instagram.com/solidformcontracting" target="_blank" rel="noopener noreferrer" aria-label="Solid Form Contracting">
-              <img src="assets/partners/solid-form.png" alt="Solid Form Contracting logo">
+            <a class="partner-card" href="https://www.instagram.com/solidformcontracting" target="_blank" rel="noopener noreferrer" aria-label="Visit Solid Form Contracting on Instagram">
+              <img src="assets/partners/solid-form.png" alt="Solid Form Contracting logo" loading="lazy" />
             </a>
 
-            <a class="partner-card" href="https://www.instagram.com/fatmanmediamanagement" target="_blank" rel="noopener noreferrer" aria-label="Fatman Media Management">
-              <img src="assets/partners/fatman-media.png" alt="Fat Man Media Management logo">
+            <a class="partner-card" href="https://www.instagram.com/fatmanmediamanagement" target="_blank" rel="noopener noreferrer" aria-label="Visit Fatman Media Management on Instagram">
+              <img src="assets/partners/fatman-media.png" alt="Fatman Media Management logo" loading="lazy" />
             </a>
-
-            <!-- Set 2 for seamless loop -->
-            <a class="partner-card" href="https://www.lostcannabis.ca/peterborough/" target="_blank" rel="noopener noreferrer" aria-label="Lost Cannabis">
-              <img src="assets/partners/lost-cannabis.png" alt="Lost Cannabis logo">
-            </a>
-
-            <a class="partner-card" href="https://lakesidegascompanyinc.ca/" target="_blank" rel="noopener noreferrer" aria-label="Lakeside Gas Company Incorporated">
-              <img src="assets/partners/lakeside-gas.png" alt="Lakeside Gas Company logo">
-            </a>
-
-            <a class="partner-card" href="https://allin1propertymanagement.ca/" target="_blank" rel="noopener noreferrer" aria-label="All In 1 Property Management">
-              <img src="assets/partners/allin1.png" alt="All In 1 Property Management logo">
-            </a>
-
-            <a class="partner-card" href="https://www.bbkstunts.ca/" target="_blank" rel="noopener noreferrer" aria-label="BBK Stunts">
-              <img src="assets/partners/bbk-stunts.png" alt="BBK Stunts logo">
-            </a>
-
-            <a class="partner-card" href="https://www.instagram.com/solidformcontracting" target="_blank" rel="noopener noreferrer" aria-label="Solid Form Contracting">
-              <img src="assets/partners/solid-form.png" alt="Solid Form Contracting logo">
-            </a>
-
-            <a class="partner-card" href="https://www.instagram.com/fatmanmediamanagement" target="_blank" rel="noopener noreferrer" aria-label="Fatman Media Management">
-              <img src="assets/partners/fatman-media.png" alt="Fat Man Media Management logo">
-            </a>
-
           </div>
         </div>
 
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>How to place the logo files</h3>
-            <p>
-              Put the logo images in <code>assets/partners/</code> inside your RideReach site.
-              Match the file names used in this page, or update the image paths in the HTML.
-            </p>
-          </div>
+        <p class="partners-note">
+          Asset paths used on this page:
+          <code>assets/partners/Lost-cannabis.jpg</code>,
+          <code>assets/partners/lakeside-gas.png</code>,
+          <code>assets/partners/allin1.jpg</code>,
+          <code>assets/partners/bbk-stunts.jpg</code>,
+          <code>assets/partners/solid-form.png</code>,
+          <code>assets/partners/fatman-media.png</code>.
+        </p>
 
-          <div class="info-card">
-            <h3>Best file types</h3>
+        <div class="grid info-grid">
+          <article class="info-card">
+            <h3>How the banner works</h3>
             <p>
-              PNG or SVG works best. Transparent backgrounds are ideal, but your current logos will still
-              work well because each one sits inside a dark premium card.
+              This file keeps only one real set of partner logos in the HTML. JavaScript clones that set after load
+              so the marquee loops cleanly without you manually duplicating the markup.
             </p>
-          </div>
+          </article>
 
-          <div class="info-card">
-            <h3>Easy to expand</h3>
+          <article class="info-card">
+            <h3>Best logo setup</h3>
             <p>
-              To add more partners later, duplicate a partner card in both repeated sets so the loop stays
-              seamless and balanced.
+              PNG and SVG are best, but your current JPG and PNG files will still look strong because every logo sits
+              inside a dark premium card with controlled sizing and spacing.
             </p>
-          </div>
+          </article>
+
+          <article class="info-card">
+            <h3>Easy to expand later</h3>
+            <p>
+              To add more partners, duplicate one partner card inside the single source track only. The script handles
+              the seamless loop automatically.
+            </p>
+          </article>
         </div>
 
-        <div class="cta">
+        <div class="grid links-grid" aria-label="Partner links">
+          <a class="link-card" href="https://www.lostcannabis.ca/peterborough/" target="_blank" rel="noopener noreferrer">
+            <strong>Lost Cannabis</strong>
+            <span>lostcannabis.ca/peterborough/</span>
+          </a>
+
+          <a class="link-card" href="https://lakesidegascompanyinc.ca/" target="_blank" rel="noopener noreferrer">
+            <strong>Lakeside Gas Company Incorporated</strong>
+            <span>lakesidegascompanyinc.ca/</span>
+          </a>
+
+          <a class="link-card" href="https://allin1propertymanagement.ca/" target="_blank" rel="noopener noreferrer">
+            <strong>All In 1 Property Management</strong>
+            <span>allin1propertymanagement.ca/</span>
+          </a>
+
+          <a class="link-card" href="https://www.bbkstunts.ca/" target="_blank" rel="noopener noreferrer">
+            <strong>BBK Stunts</strong>
+            <span>bbkstunts.ca/</span>
+          </a>
+
+          <a class="link-card" href="https://www.instagram.com/solidformcontracting" target="_blank" rel="noopener noreferrer">
+            <strong>Solid Form Contracting</strong>
+            <span>instagram.com/solidformcontracting</span>
+          </a>
+
+          <a class="link-card" href="https://www.instagram.com/fatmanmediamanagement" target="_blank" rel="noopener noreferrer">
+            <strong>Fatman Media Management</strong>
+            <span>instagram.com/fatmanmediamanagement</span>
+          </a>
+        </div>
+
+        <section class="cta" aria-labelledby="cta-title">
           <div>
-            <h3>Want your business featured here?</h3>
+            <h2 id="cta-title">Want your business featured here?</h2>
             <p>
-              RideReach helps local brands stay visible through in-vehicle digital advertising. A featured
-              partner placement strengthens both on-screen visibility and online credibility.
+              RideReach helps local brands stay visible through in-vehicle digital advertising. A featured partner
+              placement strengthens both on-screen visibility and online credibility.
             </p>
           </div>
 
@@ -643,7 +829,7 @@
             <a class="btn btn-primary" href="index.html#pricing">Request Pricing</a>
             <a class="btn btn-secondary" href="index.html#contact">Contact RideReach</a>
           </div>
-        </div>
+        </section>
       </div>
     </section>
   </main>
@@ -654,5 +840,86 @@
       <div>In-Vehicle Digital Advertising • Peterborough + Surrounding Areas</div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const marquee = document.querySelector('[data-marquee]');
+      if (!marquee) return;
+
+      const track = marquee.querySelector('.partners-track');
+      if (!track) return;
+
+      const sourceItems = Array.from(track.children);
+      if (!sourceItems.length) return;
+
+      let built = false;
+
+      function getGapPx(element) {
+        const styles = window.getComputedStyle(element);
+        return parseFloat(styles.columnGap || styles.gap || '0') || 0;
+      }
+
+      function clearClones() {
+        track.querySelectorAll('[data-clone="true"]').forEach(node => node.remove());
+      }
+
+      function buildMarquee() {
+        marquee.classList.remove('is-ready');
+        clearClones();
+
+        const originals = Array.from(track.children).filter(item => item.dataset.clone !== 'true');
+        if (!originals.length) return;
+
+        const gap = getGapPx(track);
+        const width = originals.reduce((sum, item) => sum + item.getBoundingClientRect().width, 0) + ((originals.length - 1) * gap);
+
+        originals.forEach(item => {
+          const clone = item.cloneNode(true);
+          clone.dataset.clone = 'true';
+          clone.setAttribute('aria-hidden', 'true');
+          clone.querySelectorAll('img').forEach(img => {
+            img.removeAttribute('loading');
+          });
+          track.appendChild(clone);
+        });
+
+        const desktopSpeed = 92;
+        const tabletSpeed = 82;
+        const mobileSpeed = 72;
+
+        const speed = window.innerWidth <= 560
+          ? mobileSpeed
+          : window.innerWidth <= 820
+            ? tabletSpeed
+            : desktopSpeed;
+
+        const duration = Math.max(width / speed, 18);
+
+        track.style.setProperty('--marquee-distance', width + 'px');
+        track.style.setProperty('--marquee-duration', duration + 's');
+
+        marquee.classList.add('is-ready');
+        built = true;
+      }
+
+      let resizeTimer;
+      function handleResize() {
+        if (!built) return buildMarquee();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(buildMarquee, 140);
+      }
+
+      function initWhenReady() {
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(buildMarquee);
+        } else {
+          buildMarquee();
+        }
+      }
+
+      window.addEventListener('load', initWhenReady);
+      window.addEventListener('resize', handleResize);
+    })();
+  </script>
 </body>
 </html>
