@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Featured Partners | RideReach</title>
-  <meta name="description" content="Explore the featured partners connected to RideReach — local businesses and brands growing with in-vehicle advertising in Peterborough and surrounding areas." />
+  <meta name="description" content="Explore the featured partners connected to RideReach — local businesses and brands growing with RideReach in Peterborough and surrounding areas." />
   <meta name="theme-color" content="#0c0d12" />
   <meta name="color-scheme" content="dark" />
 
@@ -32,6 +32,7 @@
       --bg:#0a0b10;
       --bg-soft:#11131a;
       --panel:rgba(255,255,255,.05);
+      --panel-2:rgba(255,255,255,.08);
       --text:#f5f7fb;
       --muted:rgba(255,255,255,.72);
       --muted-2:rgba(255,255,255,.56);
@@ -44,14 +45,15 @@
       --radius:24px;
       --max:1320px;
       --header-height:82px;
-      --marquee-duration: 28s;
-      --marquee-start: 100vw;
-      --marquee-end: -2200px;
     }
 
-    *{ box-sizing:border-box; }
+    *{
+      box-sizing:border-box;
+    }
 
-    html{ scroll-behavior:smooth; }
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
@@ -309,68 +311,71 @@
       line-height:1.78;
     }
 
-    .partners-wrap{
+    .marquee-shell{
       position:relative;
       overflow:hidden;
-      padding:18px 0 14px;
+      padding:18px 0 12px;
       min-height:170px;
       mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
       -webkit-mask-image:linear-gradient(to right, transparent 0, #000 8%, #000 92%, transparent 100%);
     }
 
-    .partners-track{
-      position:absolute;
-      top:18px;
-      left:0;
+    .marquee-track{
+      position:relative;
       display:flex;
       align-items:center;
       gap:24px;
       width:max-content;
       will-change:transform;
-      animation:partner-scroll-single var(--marquee-duration) linear infinite;
+      transform:translateX(0);
     }
 
-    .partners-wrap:hover .partners-track{
-      animation-play-state:paused;
-    }
-
-    .partner-card{
-      width:270px;
-      height:138px;
-      flex:0 0 auto;
+    .marquee-item{
+      width:250px;
+      height:132px;
+      flex:0 0 250px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:18px 20px;
-      border-radius:24px;
+      padding:16px;
+      border-radius:22px;
       border:1px solid var(--line);
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
       box-shadow:0 12px 38px rgba(0,0,0,.24);
       transition:
-        transform .25s ease,
-        border-color .25s ease,
-        background .25s ease,
-        box-shadow .25s ease;
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease,
+        box-shadow .22s ease;
     }
 
-    .partner-card:hover{
+    .marquee-item:hover{
       transform:translateY(-4px);
       border-color:rgba(227,24,55,.48);
       background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
       box-shadow:0 20px 46px rgba(0,0,0,.32);
     }
 
-    .partner-card:focus-visible{
+    .marquee-item:focus-visible{
       outline:none;
       border-color:rgba(255,90,115,.8);
       box-shadow:0 0 0 3px rgba(255,90,115,.2), 0 20px 46px rgba(0,0,0,.32);
     }
 
-    .partner-card img{
+    .marquee-logo-box{
+      width:100%;
+      height:76px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .marquee-logo-box img{
+      max-width:100%;
+      max-height:76px;
       width:auto;
       height:auto;
-      max-width:100%;
-      max-height:88px;
       object-fit:contain;
       filter:drop-shadow(0 4px 12px rgba(0,0,0,.18));
     }
@@ -531,15 +536,6 @@
       flex-wrap:wrap;
     }
 
-    @keyframes partner-scroll-single{
-      from{
-        transform:translateX(var(--marquee-start));
-      }
-      to{
-        transform:translateX(var(--marquee-end));
-      }
-    }
-
     @media (max-width: 1040px){
       .hero-grid,
       .cta,
@@ -576,23 +572,28 @@
         grid-template-columns:1fr;
       }
 
-      .partners-wrap{
-        min-height:146px;
+      .marquee-shell{
+        min-height:152px;
       }
 
-      .partner-card{
-        width:224px;
+      .marquee-track{
+        gap:18px;
+      }
+
+      .marquee-item{
+        width:220px;
         height:118px;
-        padding:16px;
+        flex-basis:220px;
+        padding:14px;
         border-radius:20px;
       }
 
-      .partner-card img{
-        max-height:70px;
+      .marquee-logo-box{
+        height:66px;
       }
 
-      .partners-track{
-        gap:18px;
+      .marquee-logo-box img{
+        max-height:66px;
       }
     }
 
@@ -601,23 +602,28 @@
         width:min(calc(100% - 20px), var(--max));
       }
 
-      .partners-wrap{
-        min-height:128px;
+      .marquee-shell{
+        min-height:132px;
       }
 
-      .partner-card{
-        width:190px;
+      .marquee-track{
+        gap:14px;
+      }
+
+      .marquee-item{
+        width:188px;
         height:102px;
-        padding:14px;
+        flex-basis:188px;
+        padding:12px;
         border-radius:18px;
       }
 
-      .partner-card img{
-        max-height:58px;
+      .marquee-logo-box{
+        height:56px;
       }
 
-      .partners-track{
-        gap:14px;
+      .marquee-logo-box img{
+        max-height:56px;
       }
     }
 
@@ -626,11 +632,10 @@
         scroll-behavior:auto;
       }
 
-      .partners-track{
-        animation:none;
-        position:relative;
-        left:auto;
-        top:auto;
+      .marquee-item,
+      .link-card,
+      .btn{
+        transition:none;
       }
     }
   </style>
@@ -682,20 +687,20 @@
 
             <div class="hero-stats">
               <div class="stat">
-                <strong>Clickable</strong>
-                <span>Every logo opens directly to the partner website or Instagram.</span>
+                <strong>One source list</strong>
+                <span>You only maintain one list of businesses in JavaScript.</span>
               </div>
               <div class="stat">
-                <strong>Single row</strong>
-                <span>One clean line of logos with no duplicate partner cards visible.</span>
+                <strong>Standard sizing</strong>
+                <span>Every partner card and logo box uses the same dimensions.</span>
               </div>
               <div class="stat">
                 <strong>Right to left</strong>
-                <span>The banner moves cleanly across the page from right to left.</span>
+                <span>The strip rotates logos from right to left continuously.</span>
               </div>
               <div class="stat">
-                <strong>Responsive</strong>
-                <span>Designed to scale properly across desktop, tablet, and mobile.</span>
+                <strong>Easy to expand</strong>
+                <span>Add one new object later and it appears automatically.</span>
               </div>
             </div>
           </aside>
@@ -709,40 +714,16 @@
           <h2 id="partner-banner-title">Featured Partner Banner</h2>
           <p>
             Hover to pause the motion. Click any logo to open that partner in a new tab.
-            This version uses one single track only, with no duplicated logo set.
+            This version uses one clean data source and cycles logos right to left in a rotating loop.
           </p>
         </div>
 
-        <div class="partners-wrap">
-          <div class="partners-track" id="partnersTrack">
-            <a class="partner-card" href="https://www.lostcannabis.ca/peterborough/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lost Cannabis">
-              <img src="assets/partners/Lost-cannabis.jpg" alt="Lost Cannabis logo" loading="lazy" />
-            </a>
-
-            <a class="partner-card" href="https://lakesidegascompanyinc.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lakeside Gas Company Incorporated">
-              <img src="assets/partners/lakeside-gas.png" alt="Lakeside Gas Company logo" loading="lazy" />
-            </a>
-
-            <a class="partner-card" href="https://allin1propertymanagement.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit All In 1 Property Management">
-              <img src="assets/partners/allin1.jpg" alt="All In 1 Property Management logo" loading="lazy" />
-            </a>
-
-            <a class="partner-card" href="https://www.bbkstunts.ca/" target="_blank" rel="noopener noreferrer" aria-label="Visit BBK Stunts">
-              <img src="assets/partners/bbk-stunts.jpg" alt="BBK Stunts logo" loading="lazy" />
-            </a>
-
-            <a class="partner-card" href="https://www.instagram.com/solidformcontracting" target="_blank" rel="noopener noreferrer" aria-label="Visit Solid Form Contracting on Instagram">
-              <img src="assets/partners/solid-form.png" alt="Solid Form Contracting logo" loading="lazy" />
-            </a>
-
-            <a class="partner-card" href="https://www.instagram.com/fatmanmediamanagement" target="_blank" rel="noopener noreferrer" aria-label="Visit Fatman Media Management on Instagram">
-              <img src="assets/partners/fatman-media.png" alt="Fatman Media Management logo" loading="lazy" />
-            </a>
-          </div>
+        <div class="marquee-shell" id="marqueeShell" aria-label="Featured partner logos">
+          <div class="marquee-track" id="marqueeTrack"></div>
         </div>
 
         <p class="partners-note">
-          Asset paths used on this page:
+          Current asset paths used:
           <code>assets/partners/Lost-cannabis.jpg</code>,
           <code>assets/partners/lakeside-gas.png</code>,
           <code>assets/partners/allin1.jpg</code>,
@@ -753,58 +734,31 @@
 
         <div class="grid info-grid">
           <article class="info-card">
-            <h3>No duplicates</h3>
+            <h3>No broken duplication logic</h3>
             <p>
-              This build uses one real set of logos only. You will not see repeated partner cards sitting in the strip.
+              This build does not clone your whole strip into the DOM over and over. It rotates one item at a time,
+              which prevents the duplicate and missing-logo problems you were seeing.
             </p>
           </article>
 
           <article class="info-card">
-            <h3>Correct movement</h3>
+            <h3>Standard visual size</h3>
             <p>
-              The strip starts off-screen to the right and travels to the left until the full row exits the viewport.
+              Every business sits inside the same card size and the same centered logo box, so wide and tall logos
+              feel much more uniform.
             </p>
           </article>
 
           <article class="info-card">
-            <h3>Easy to edit</h3>
+            <h3>Simple to add later</h3>
             <p>
-              To add a new partner later, just add one more logo card to the single track. No duplicate block management needed.
+              To add another business, copy one object in the partner array near the bottom of this file and change
+              its name, link, and logo path.
             </p>
           </article>
         </div>
 
-        <div class="grid links-grid" aria-label="Partner links">
-          <a class="link-card" href="https://www.lostcannabis.ca/peterborough/" target="_blank" rel="noopener noreferrer">
-            <strong>Lost Cannabis</strong>
-            <span>lostcannabis.ca/peterborough/</span>
-          </a>
-
-          <a class="link-card" href="https://lakesidegascompanyinc.ca/" target="_blank" rel="noopener noreferrer">
-            <strong>Lakeside Gas Company Incorporated</strong>
-            <span>lakesidegascompanyinc.ca/</span>
-          </a>
-
-          <a class="link-card" href="https://allin1propertymanagement.ca/" target="_blank" rel="noopener noreferrer">
-            <strong>All In 1 Property Management</strong>
-            <span>allin1propertymanagement.ca/</span>
-          </a>
-
-          <a class="link-card" href="https://www.bbkstunts.ca/" target="_blank" rel="noopener noreferrer">
-            <strong>BBK Stunts</strong>
-            <span>bbkstunts.ca/</span>
-          </a>
-
-          <a class="link-card" href="https://www.instagram.com/solidformcontracting" target="_blank" rel="noopener noreferrer">
-            <strong>Solid Form Contracting</strong>
-            <span>instagram.com/solidformcontracting</span>
-          </a>
-
-          <a class="link-card" href="https://www.instagram.com/fatmanmediamanagement" target="_blank" rel="noopener noreferrer">
-            <strong>Fatman Media Management</strong>
-            <span>instagram.com/fatmanmediamanagement</span>
-          </a>
-        </div>
+        <div class="grid links-grid" id="partnerLinks" aria-label="Partner links"></div>
 
         <section class="cta" aria-labelledby="cta-title">
           <div>
@@ -832,29 +786,161 @@
   </footer>
 
   <script>
+    const partners = [
+      {
+        name: "Lost Cannabis",
+        url: "https://www.lostcannabis.ca/peterborough/",
+        logo: "assets/partners/Lost-cannabis.jpg"
+      },
+      {
+        name: "Lakeside Gas Company Incorporated",
+        url: "https://lakesidegascompanyinc.ca/",
+        logo: "assets/partners/lakeside-gas.png"
+      },
+      {
+        name: "All In 1 Property Management",
+        url: "https://allin1propertymanagement.ca/",
+        logo: "assets/partners/allin1.jpg"
+      },
+      {
+        name: "BBK Stunts",
+        url: "https://www.bbkstunts.ca/",
+        logo: "assets/partners/bbk-stunts.jpg"
+      },
+      {
+        name: "Solid Form Contracting",
+        url: "https://www.instagram.com/solidformcontracting",
+        logo: "assets/partners/solid-form.png"
+      },
+      {
+        name: "Fatman Media Management",
+        url: "https://www.instagram.com/fatmanmediamanagement",
+        logo: "assets/partners/fatman-media.png"
+      }
+    ];
+
     (function () {
-      const track = document.getElementById('partnersTrack');
-      if (!track) return;
+      const track = document.getElementById("marqueeTrack");
+      const shell = document.getElementById("marqueeShell");
+      const links = document.getElementById("partnerLinks");
+      if (!track || !shell || !links || !partners.length) return;
 
-      function updateMarquee() {
-        const trackWidth = track.scrollWidth;
-        const viewportWidth = window.innerWidth;
+      function createPartnerCard(partner) {
+        const a = document.createElement("a");
+        a.className = "marquee-item";
+        a.href = partner.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.setAttribute("aria-label", `Visit ${partner.name}`);
 
-        document.documentElement.style.setProperty('--marquee-start', viewportWidth + 'px');
-        document.documentElement.style.setProperty('--marquee-end', '-' + trackWidth + 'px');
+        const box = document.createElement("div");
+        box.className = "marquee-logo-box";
 
-        const speed = viewportWidth <= 560 ? 70 : viewportWidth <= 820 ? 82 : 96;
-        const totalDistance = viewportWidth + trackWidth;
-        const duration = Math.max(totalDistance / speed, 18);
+        const img = document.createElement("img");
+        img.src = partner.logo;
+        img.alt = `${partner.name} logo`;
+        img.loading = "lazy";
 
-        document.documentElement.style.setProperty('--marquee-duration', duration + 's');
+        box.appendChild(img);
+        a.appendChild(box);
+        return a;
       }
 
-      window.addEventListener('load', updateMarquee);
-      window.addEventListener('resize', updateMarquee);
+      function createLinkCard(partner) {
+        const a = document.createElement("a");
+        a.className = "link-card";
+        a.href = partner.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+
+        const strong = document.createElement("strong");
+        strong.textContent = partner.name;
+
+        const span = document.createElement("span");
+        span.textContent = partner.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+        a.appendChild(strong);
+        a.appendChild(span);
+        return a;
+      }
+
+      function renderInitial() {
+        track.innerHTML = "";
+        links.innerHTML = "";
+
+        partners.forEach((partner) => {
+          track.appendChild(createPartnerCard(partner));
+          links.appendChild(createLinkCard(partner));
+        });
+      }
+
+      let animationId = null;
+      let paused = false;
+      let x = 0;
+      let speed = 0.6;
+
+      function updateSpeed() {
+        if (window.innerWidth <= 560) {
+          speed = 0.45;
+        } else if (window.innerWidth <= 820) {
+          speed = 0.52;
+        } else {
+          speed = 0.6;
+        }
+      }
+
+      function step() {
+        if (!paused) {
+          x -= speed;
+          track.style.transform = `translateX(${x}px)`;
+
+          const first = track.firstElementChild;
+          if (first) {
+            const firstWidth = first.offsetWidth;
+            const gap = parseFloat(getComputedStyle(track).gap || "0");
+            const firstTotal = firstWidth + gap;
+
+            if (-x >= firstTotal) {
+              x += firstTotal;
+              track.appendChild(first);
+              track.style.transform = `translateX(${x}px)`;
+            }
+          }
+        }
+
+        animationId = requestAnimationFrame(step);
+      }
+
+      function start() {
+        if (animationId) cancelAnimationFrame(animationId);
+        updateSpeed();
+        animationId = requestAnimationFrame(step);
+      }
+
+      shell.addEventListener("mouseenter", () => {
+        paused = true;
+      });
+
+      shell.addEventListener("mouseleave", () => {
+        paused = false;
+      });
+
+      shell.addEventListener("focusin", () => {
+        paused = true;
+      });
+
+      shell.addEventListener("focusout", () => {
+        paused = false;
+      });
+
+      window.addEventListener("resize", updateSpeed);
+
+      renderInitial();
 
       if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(updateMarquee);
+        document.fonts.ready.then(start);
+      } else {
+        window.addEventListener("load", start);
       }
     })();
   </script>
